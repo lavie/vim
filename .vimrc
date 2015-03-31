@@ -16,9 +16,11 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-fugitive'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
+Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
 "
 "
@@ -39,6 +41,7 @@ set nocompatible
 set wildmenu
 set ignorecase
 set shiftwidth=4
+set smarttab
 set wildmode=longest,list
 
 
@@ -70,3 +73,4 @@ cabbrev pla PymodeLintAuto
 
 " " Make sure bash_profile is loaded in vim.
 set shell=bash\ --login
+
