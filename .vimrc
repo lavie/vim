@@ -47,6 +47,7 @@ set wildmode=longest,list
 
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_show_hidden = 1
 
 " Colors
 :colorscheme desert
@@ -74,3 +75,12 @@ cabbrev pla PymodeLintAuto
 " " Make sure bash_profile is loaded in vim.
 set shell=bash\ --login
 
+" DiffView
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
