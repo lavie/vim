@@ -32,6 +32,7 @@ set number
 set incsearch
 set hlsearch
 set expandtab
+set smartindent
 set tabstop=4
 set nocompatible
 set wildmenu
