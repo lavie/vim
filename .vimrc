@@ -19,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
+Plugin 'terryma/vim-expand-region'
 "
 "
 
