@@ -57,6 +57,8 @@ map <F2> :NERDTreeToggle<CR>
 map <C-left> :tabprevious<CR>
 map <C-right> :tabnext<CR>
 map <C-t> :tabnew
+map <C-S-Left> :tabmove -1<CR>
+map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Resize window height
