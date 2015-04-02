@@ -84,3 +84,7 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+
+" Python (Jedi-VIM)
+let g:jedi#show_call_signatures = 0
+ 
