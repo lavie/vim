@@ -22,6 +22,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
 "
 "
 
@@ -61,6 +63,7 @@ map <C-S-Left> :tabmove -1<CR>
 map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nmap <C-W> :tabclose<CR>
 " Resize window height
 nmap = :resize +2<CR>
 nmap - :resize -2<CR>
@@ -90,3 +93,5 @@ com! DiffSaved call s:DiffWithSaved()
 " Python (Jedi-VIM)
 let g:jedi#show_call_signatures = 0
  
+" PrettyJs
+command Prettyjs call JsBeautify()
