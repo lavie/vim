@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 " Bundle 'klen/python-mode'
 Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
@@ -99,3 +100,10 @@ let g:jedi#show_call_signatures = 0
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
+
+" Tagbar
+map <F8> :TagbarOpenAutoClose<CR> 
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_detect_paste=1
