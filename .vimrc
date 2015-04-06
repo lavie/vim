@@ -21,7 +21,6 @@ Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-fugitive'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
 Plugin 'ervandew/supertab'
@@ -54,8 +53,6 @@ set wildmode=longest,list
 set autochdir
 set guifont=Menlo\ Regular:h14
 
-set background=dark
-colorscheme solarized
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
