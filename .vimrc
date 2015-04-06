@@ -24,6 +24,7 @@ Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
+Bundle 'chase/vim-ansible-yaml'
 "
 "
 
@@ -45,6 +46,7 @@ set ignorecase
 set shiftwidth=4
 set smarttab
 set wildmode=longest,list
+set autochdir
 
 
 " Enable CtrlP
@@ -94,4 +96,4 @@ com! DiffSaved call s:DiffWithSaved()
 let g:jedi#show_call_signatures = 0
  
 " PrettyJs
-command Prettyjs call JsBeautify()
+com! Prettyjs call JsBeautify()
