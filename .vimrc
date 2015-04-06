@@ -13,7 +13,9 @@ Plugin 'gmarik/Vundle.vim'
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
 " Bundle 'klen/python-mode'
+Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-fugitive'
 Plugin 'davidhalter/jedi-vim'
@@ -24,6 +26,7 @@ Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
+Plugin 'ctrlp.vim'
 Bundle 'chase/vim-ansible-yaml'
 "
 "
@@ -47,7 +50,7 @@ set shiftwidth=4
 set smarttab
 set wildmode=longest,list
 set autochdir
-
+set guifont=Menlo\ Regular:h14
 
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -60,12 +63,11 @@ let g:ctrlp_show_hidden = 1
 map <F2> :NERDTreeToggle<CR>
 map <C-left> :tabprevious<CR>
 map <C-right> :tabnext<CR>
-map <C-t> :tabnew
-map <C-S-Left> :tabmove -1<CR>
-map <C-S-Right> :tabmove +1<CR>
+map <C-t> :tabnew 
+" map <C-S-Left> :tabmove -1<CR>
+" map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-nmap <C-W> :tabclose<CR>
 " Resize window height
 nmap = :resize +2<CR>
 nmap - :resize -2<CR>
