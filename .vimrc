@@ -12,15 +12,15 @@ Plugin 'gmarik/Vundle.vim'
 
 " Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
-" Bundle 'klen/python-mode'
-Plugin 'majutsushi/tagbar'
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'majutsushi/tagbar' " Slow...
+"Plugin 'airblade/vim-gitgutter' " This seems very slow...
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
@@ -66,8 +66,8 @@ map <F2> :NERDTreeToggle<CR>
 map <C-left> :tabprevious<CR>
 map <C-right> :tabnext<CR>
 map <C-t> :tabnew 
-" map <C-S-Left> :tabmove -1<CR>
-" map <C-S-Right> :tabmove +1<CR>
+map <C-S-Left> :tabmove -1<CR>
+map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Resize window height
@@ -103,7 +103,7 @@ let g:jedi#show_call_signatures = 0
 com! Prettyjs call JsBeautify()
 
 " Tagbar
-map <F8> :TagbarOpenAutoClose<CR> 
+"map <F8> :TagbarOpenAutoClose<CR> 
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
