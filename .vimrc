@@ -53,6 +53,7 @@ set smarttab
 set wildmode=longest,list
 set autochdir
 set guifont=Menlo\ Regular:h14
+set cursorline
 
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -65,11 +66,16 @@ let g:ctrlp_show_hidden = 1
 map <F2> :NERDTreeToggle<CR>
 map <C-left> :tabprevious<CR>
 map <C-right> :tabnext<CR>
+map <S-left> :bp<CR>
+map <S-right> :bn<CR>
 map <C-t> :tabnew 
 map <C-S-Left> :tabmove -1<CR>
 map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
+" replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+" search with Ack for word under cursor
+nnoremap <Leader>a :Ack <C-r><C-w>
 " Resize window height
 nmap = :resize +2<CR>
 nmap - :resize -2<CR>
