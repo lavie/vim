@@ -17,6 +17,7 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
+Plugin 'alfredodeza/pytest.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
@@ -118,7 +119,7 @@ let g:airline_detect_paste=1
 
 
 " Create missing directories when saving file to new path
-function s:MkNonExDir(file, buf)
+function! s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
         let dir=fnamemodify(a:file, ':h')
         if !isdirectory(dir)
@@ -128,5 +129,5 @@ function s:MkNonExDir(file, buf)
 endfunction
 augroup BWCCreateDir
     autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
