@@ -1,3 +1,4 @@
+let mapleader = "\<space>"
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -18,10 +19,12 @@ Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
@@ -74,10 +77,11 @@ map <C-t> :tabnew
 map <C-S-Left> :tabmove -1<CR>
 map <C-S-Right> :tabmove +1<CR>
 nmap <Leader>h :noh<CR>
+
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " search with Ack for word under cursor
-nnoremap <Leader>a :Ack <C-r><C-w>
+nnoremap <Leader>a :Ag <C-r><C-w>
 " Resize window height
 nmap = :resize +2<CR>
 nmap - :resize -2<CR>
@@ -85,10 +89,15 @@ nmap - :resize -2<CR>
 nmap + :vert resize +2<CR>
 nmap _ :vert resize -2<CR>
 
+
+" Toggle comment with Leader-c
+map <Leader>c gcc
+
+
 " Abbreviations
 cabbrev h tab help
 cabbrev E Explore
-cabbrev a Ack
+cabbrev a Ag
 cabbrev pla PymodeLintAuto
 
 " " Make sure bash_profile is loaded in vim.
