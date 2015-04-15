@@ -71,11 +71,14 @@ nmap <S-Enter> O<Esc>
 map <F2> :NERDTreeToggle<CR>
 map <C-h> :tabprevious<CR>
 map <C-l> :tabnext<CR>
-map <S-left> :bp<CR>
-map <S-right> :bn<CR>
+nmap <S-left> :bp<CR>
+nmap <S-right> :bn<CR>
+nmap <S-down> :bd<CR>
 map <C-t> :tabnew 
-map <C-S-Left> :tabmove -1<CR>
-map <C-S-Right> :tabmove +1<CR>
+nmap <C-S-Left> :tabmove -1<CR>
+nmap <C-S-Right> :tabmove +1<CR>
+map j gj
+map k gk
 nmap <Leader>h :noh<CR>
 
 " replace word under cursor
