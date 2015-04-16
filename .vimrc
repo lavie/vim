@@ -23,6 +23,7 @@ Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'PeterRincker/vim-argumentative'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
@@ -66,6 +67,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-e>'],
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
+nmap <Leader>p <C-p>
 
 " Colors
 :colorscheme desert
@@ -82,11 +84,13 @@ nmap <S-left> :bp<CR>
 nmap <S-right> :bn<CR>
 nmap <S-down> :bd<CR>
 map <C-t> :tabnew 
-nmap <C-S-Left> :tabmove -1<CR>
-nmap <C-S-Right> :tabmove +1<CR>
+nmap <S-h> :tabmove -1<CR>
+nmap <S-l> :tabmove +1<CR>
+
 map j gj
 map k gk
 nmap <Leader>h :noh<CR>
+nmap <Leader>t :tabedit 
 
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -150,3 +154,16 @@ augroup BWCCreateDir
     autocmd!
     autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
+
+
+" Argumentative
+nmap [; <Plug>Argumentative_Prev
+nmap ]; <Plug>Argumentative_Next
+xmap [; <Plug>Argumentative_XPrev
+xmap ]; <Plug>Argumentative_XNext
+nmap <; <Plug>Argumentative_MoveLeft
+nmap >; <Plug>Argumentative_MoveRight
+xmap i; <Plug>Argumentative_InnerTextObject
+xmap a; <Plug>Argumentative_OuterTextObject
+omap i; <Plug>Argumentative_OpPendingInnerTextObject
+omap a; <Plug>Argumentative_OpPendingOuterTextObject
