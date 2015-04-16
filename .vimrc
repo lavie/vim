@@ -62,11 +62,18 @@ set cursorline
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-e>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
 
 " Colors
 :colorscheme desert
 
 " Mappings
+
+nmap <C-j> 10jzz
+nmap <C-k> 10kzz
 nmap <S-Enter> O<Esc>
 map <F2> :NERDTreeToggle<CR>
 map <C-h> :tabprevious<CR>
