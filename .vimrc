@@ -74,6 +74,8 @@ nmap <Leader>p <C-p>
 
 " Mappings
 
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
 nmap <C-j> 10jzz
 nmap <C-k> 10kzz
 nmap <S-Enter> O<Esc>
@@ -106,6 +108,9 @@ nmap _ :vert resize -2<CR>
 
 " Toggle comment with Leader-c
 map <Leader>c gcc
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 
 " Abbreviations
