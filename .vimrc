@@ -68,6 +68,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
 nmap <Leader>p :<C-U>CtrlP<CR>
+let g:ctrlp_custom_ignore = { 'file' : '\.pyc$', 'dir' : '(\.git$|/dockerbuild/)' }
 
 " Colors
 :colorscheme desert
