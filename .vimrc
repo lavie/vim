@@ -67,47 +67,50 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("e")': ['<c-e>'],
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
-nmap <Leader>p <C-p>
+nmap <Leader>p :<C-U>CtrlP<CR>
 
 " Colors
 :colorscheme desert
 
 " Mappings
 
-nmap <Leader>w :w<CR>
-nmap <Leader>q :q<CR>
-nmap <C-j> 10jzz
-nmap <C-k> 10kzz
-nmap <S-Enter> O<Esc>
-map <F2> :NERDTreeToggle<CR>
-map <C-h> :tabprevious<CR>
-map <C-l> :tabnext<CR>
-nmap <S-left> :bp<CR>
-nmap <S-right> :bn<CR>
-nmap <S-down> :bd<CR>
-map <C-t> :tabnew 
-nmap <S-h> :tabmove -1<CR>
-nmap <S-l> :tabmove +1<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <C-j> 10jzz
+nnoremap <C-k> 10kzz
+nnoremap <S-Enter> O<Esc>
+noremap <F2> :NERDTreeToggle<CR>
+noremap <C-h> :tabprevious<CR>
+noremap <C-l> :tabnext<CR>
+nnoremap <S-left> :bp<CR>
+nnoremap <S-right> :bn<CR>
+nnoremap <S-down> :bd<CR>
+noremap <C-t> :tabnew 
+nnoremap <S-h> :tabmove -1<CR>
+nnoremap <S-l> :tabmove +1<CR>
 
-map j gj
-map k gk
-nmap <Leader>h :noh<CR>
-nmap <Leader>t :tabedit 
+noremap j gj
+noremap k gk
+nnoremap <Leader>h :noh<CR>
+nnoremap <Leader>t :tabedit 
+
+nnoremap <Leader>ve :tabedit $MYVIMRC<CR>
+nnoremap <Leader>vs :write<cr>:so %<cr>:q<CR>
 
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " search with Ack for word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w>
 " Resize window height
-nmap = :resize +2<CR>
-nmap - :resize -2<CR>
+nnoremap = :resize +2<CR>
+nnoremap - :resize -2<CR>
 " And width..
-nmap + :vert resize +2<CR>
-nmap _ :vert resize -2<CR>
+nnoremap + :vert resize +2<CR>
+nnoremap _ :vert resize -2<CR>
 
 
 " Toggle comment with Leader-c
-map <Leader>c gcc
+noremap <Leader>c gcc
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
@@ -118,6 +121,7 @@ cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
 cabbrev pla PymodeLintAuto
+ab ipy import IPython; IPython.embed()
 
 " " Make sure bash_profile is loaded in vim.
 set shell=bash\ --login
@@ -139,7 +143,7 @@ let g:jedi#show_call_signatures = 0
 com! Prettyjs call JsBeautify()
 
 " Tagbar
-"map <F8> :TagbarOpenAutoClose<CR> 
+"noremap <F8> :TagbarOpenAutoClose<CR> 
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -162,13 +166,13 @@ augroup END
 
 
 " Argumentative
-nmap [; <Plug>Argumentative_Prev
-nmap ]; <Plug>Argumentative_Next
-xmap [; <Plug>Argumentative_XPrev
-xmap ]; <Plug>Argumentative_XNext
-nmap <; <Plug>Argumentative_MoveLeft
-nmap >; <Plug>Argumentative_MoveRight
-xmap i; <Plug>Argumentative_InnerTextObject
-xmap a; <Plug>Argumentative_OuterTextObject
-omap i; <Plug>Argumentative_OpPendingInnerTextObject
-omap a; <Plug>Argumentative_OpPendingOuterTextObject
+nnoremap [; <Plug>Argumentative_Prev
+nnoremap ]; <Plug>Argumentative_Next
+xnoremap [; <Plug>Argumentative_XPrev
+xnoremap ]; <Plug>Argumentative_XNext
+nnoremap <; <Plug>Argumentative_MoveLeft
+nnoremap >; <Plug>Argumentative_MoveRight
+xnoremap i; <Plug>Argumentative_InnerTextObject
+xnoremap a; <Plug>Argumentative_OuterTextObject
+onoremap i; <Plug>Argumentative_OpPendingInnerTextObject
+onoremap a; <Plug>Argumentative_OpPendingOuterTextObject
