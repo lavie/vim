@@ -66,10 +66,10 @@ set selection=inclusive
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-e>'],
-    \ 'AcceptSelection("t")': ['<cr>'],
-    \ }
+" let g:ctrlp_prompt_mappings = {
+"     \ 'AcceptSelection("e")': ['<c-e>'],
+"     \ 'AcceptSelection("t")': ['<cr>'],
+"     \ }
 nmap <Leader>p :<C-U>CtrlP<CR>
 let g:ctrlp_custom_ignore = { 'file' : '\.pyc$', 'dir' : '(\.git$|/dockerbuild/)' }
 
@@ -79,13 +79,13 @@ let g:ctrlp_custom_ignore = { 'file' : '\.pyc$', 'dir' : '(\.git$|/dockerbuild/)
 " Mappings
 
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>q :bd<CR>
 nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <S-Enter> O<Esc>
 noremap <F2> :NERDTreeToggle<CR>
-noremap <C-h> :tabprevious<CR>
-noremap <C-l> :tabnext<CR>
+noremap <C-h> :bprevious<CR>
+noremap <C-l> :bnext<CR>
 nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
 nnoremap <S-down> :bd<CR>
@@ -152,6 +152,7 @@ com! Prettyjs call JsBeautify()
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_detect_paste=1
 
 
@@ -181,3 +182,6 @@ xnoremap i; <Plug>Argumentative_InnerTextObject
 xnoremap a; <Plug>Argumentative_OuterTextObject
 onoremap i; <Plug>Argumentative_OpPendingInnerTextObject
 onoremap a; <Plug>Argumentative_OpPendingOuterTextObject
+
+
+source ~/.vim/BufOnly.vim
