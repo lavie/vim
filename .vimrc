@@ -16,6 +16,7 @@ Bundle 'scrooloose/nerdtree'
 "Plugin 'majutsushi/tagbar' " Slow...
 "Plugin 'airblade/vim-gitgutter' " This seems very slow...
 Plugin 'tpope/vim-surround'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
@@ -24,7 +25,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'PeterRincker/vim-argumentative'
-"Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
@@ -59,6 +59,9 @@ set wildmode=longest,list
 set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
+
+" For multiple-cursors to function properly
+set selection=inclusive
 
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -111,10 +114,11 @@ nnoremap _ :vert resize -2<CR>
 
 
 " Toggle comment with Leader-c
-noremap <Leader>c gcc
+nmap <Leader>c gcc
+vmap <Leader>c gcc
 
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+vnoremap v <Plug>(expand_region_expand)
+vnoremap <C-v> <Plug>(expand_region_shrink)
 
 
 " Abbreviations
