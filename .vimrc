@@ -54,6 +54,8 @@ set nocompatible
 set wildmenu
 set ignorecase
 set shiftwidth=4
+set hidden
+set relativenumber
 set smarttab
 set wildmode=longest,list
 set autochdir
@@ -117,8 +119,8 @@ nnoremap _ :vert resize -2<CR>
 nmap <Leader>c gcc
 vmap <Leader>c gcc
 
-vnoremap v <Plug>(expand_region_expand)
-vnoremap <C-v> <Plug>(expand_region_shrink)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 
 " Abbreviations
