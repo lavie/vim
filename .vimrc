@@ -92,8 +92,8 @@ nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
 nnoremap <S-down> :bd<CR>
 noremap <C-t> :tabnew 
-nnoremap <S-h> :tabmove -1<CR>
-nnoremap <S-l> :tabmove +1<CR>
+nnoremap <S-h> :tabnext<CR>
+nnoremap <S-l> :tabprev<CR>
 
 noremap j gj
 noremap k gk
@@ -145,6 +145,7 @@ com! DiffSaved call s:DiffWithSaved()
 
 " Python (Jedi-VIM)
 let g:jedi#show_call_signatures = 0
+let g:jedi#use_tabs_not_buffers = 0
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
