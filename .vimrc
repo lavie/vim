@@ -31,6 +31,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'grep.vim'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
+Plugin 'mhinz/vim-sayonara'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
 Plugin 'ctrlp.vim'
@@ -90,7 +91,7 @@ noremap <C-h> :bprevious<CR>
 noremap <C-l> :bnext<CR>
 nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
-nnoremap <S-down> :bd<CR>
+nnoremap <silent><S-down>  :Sayonara<CR>
 noremap <C-t> :tabnew 
 nnoremap <S-h> :tabnext<CR>
 nnoremap <S-l> :tabprev<CR>
@@ -101,7 +102,7 @@ nnoremap <Leader>h :noh<CR>
 nnoremap <Leader>t :tabedit 
 
 nnoremap <Leader>ve :tabedit $MYVIMRC<CR>
-nnoremap <Leader>vs :write<cr>:so %<cr>:q<CR>
+nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
 
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -188,3 +189,8 @@ onoremap a; <Plug>Argumentative_OpPendingOuterTextObject
 
 
 source ~/.vim/BufOnly.vim
+
+
+" Sayonara
+nnoremap <leader>q :Sayonara<cr>
+nnoremap <leader>Q :Sayonara!<cr>
