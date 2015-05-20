@@ -176,8 +176,8 @@ augroup END
 
 
 " Argumentative
-nnoremap [; <Plug>Argumentative_Prev
-nnoremap ]; <Plug>Argumentative_Next
+nmap [; <Plug>Argumentative_Prev
+nmap ]; <Plug>Argumentative_Next
 xnoremap [; <Plug>Argumentative_XPrev
 xnoremap ]; <Plug>Argumentative_XNext
 nnoremap <; <Plug>Argumentative_MoveLeft
