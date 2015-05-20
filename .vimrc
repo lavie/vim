@@ -188,7 +188,7 @@ onoremap i; <Plug>Argumentative_OpPendingInnerTextObject
 onoremap a; <Plug>Argumentative_OpPendingOuterTextObject
 
 
-source ~/.vim/BufOnly.vim
+source ~/.vim/bufonly.vim
 
 
 " Sayonara
