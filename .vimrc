@@ -36,7 +36,6 @@ Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
 Plugin 'ctrlp.vim'
 Bundle 'chase/vim-ansible-yaml'
-Plugin 'takac/vim-hardtime'
 "
 "
 
@@ -160,9 +159,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_detect_paste=1
 
-
-" Hard-time
-let g:hardtime_default_on = 1
 
 " Create missing directories when saving file to new path
 function! s:MkNonExDir(file, buf)
