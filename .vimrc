@@ -20,6 +20,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'nvie/vim-flake8'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
@@ -74,7 +75,10 @@ let g:ctrlp_show_hidden = 1
 "     \ 'AcceptSelection("t")': ['<cr>'],
 "     \ }
 nmap <Leader>p :<C-U>CtrlP<CR>
-let g:ctrlp_custom_ignore = { 'file' : '\.pyc$', 'dir' : '(\.git$|/dockerbuild/)' }
+if (exists("g:ctrlp_custom_ignore"))
+    unlet g:ctrlp_custom_ignore
+endif
+let g:ctrlp_custom_ignore = '\v(dockerbuild|.ropeproject|\.git|\.pyc|\.egg-info)$'
 
 " Colors
 :colorscheme desert
