@@ -20,11 +20,11 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'davidhalter/jedi-vim'
+" Plugin 'davidhalter/jedi-vim'
 Plugin 'PeterRincker/vim-argumentative'
 Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
@@ -52,7 +52,6 @@ set hlsearch
 set expandtab
 set smartindent
 set tabstop=4
-set nocompatible
 set wildmenu
 set ignorecase
 set shiftwidth=4
@@ -132,7 +131,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
-cabbrev pla PymodeLintAuto
 ab ipy import IPython; IPython.embed()
 
 " " Make sure bash_profile is loaded in vim.
@@ -149,8 +147,8 @@ endfunction
 com! DiffSaved call s:DiffWithSaved()
 
 " Python (Jedi-VIM)
-let g:jedi#show_call_signatures = 0
-let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#show_call_signatures = 0
+" let g:jedi#use_tabs_not_buffers = 0
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
