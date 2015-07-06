@@ -15,26 +15,27 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 "Plugin 'majutsushi/tagbar' " Slow...
 "Plugin 'airblade/vim-gitgutter' " This seems very slow...
+" Plugin 'lukaszkorecki/coffeetags'
 Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
-Plugin 'elzr/vim-json'
+" Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
 " Plugin 'nvie/vim-flake8'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'PeterRincker/vim-argumentative'
+Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-commentary'
-Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'grep.vim'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-fuzzy.vim'
+Plugin 'nelstrom/vim-qargs'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
 Plugin 'mhinz/vim-sayonara'
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
+" Plugin 'einars/js-beautify'
 Plugin 'ctrlp.vim'
 Bundle 'chase/vim-ansible-yaml'
 "
@@ -50,7 +51,7 @@ set number
 set incsearch
 set hlsearch
 set expandtab
-set smartindent
+" set smartindent
 set tabstop=4
 set wildmenu
 set ignorecase
@@ -69,15 +70,11 @@ set selection=inclusive
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
-" let g:ctrlp_prompt_mappings = {
-"     \ 'AcceptSelection("e")': ['<c-e>'],
-"     \ 'AcceptSelection("t")': ['<cr>'],
-"     \ }
 nmap <Leader>p :<C-U>CtrlP<CR>
 if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
-let g:ctrlp_custom_ignore = '\v(dockerbuild|.ropeproject|\.git|\.pyc|\.egg-info)$'
+let g:ctrlp_custom_ignore = '\v(dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.egg-info)$'
 
 " Colors
 :colorscheme desert
@@ -104,7 +101,7 @@ noremap k gk
 nnoremap <Leader>h :noh<CR>
 nnoremap <Leader>t :tabedit 
 
-nnoremap <Leader>ve :tabedit $MYVIMRC<CR>
+nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
 
 " replace word under cursor
@@ -148,7 +145,7 @@ com! DiffSaved call s:DiffWithSaved()
 
 " Python (Jedi-VIM)
 " let g:jedi#show_call_signatures = 0
-" let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_tabs_not_buffers = 0
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
@@ -176,6 +173,27 @@ augroup BWCCreateDir
     autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+
+" Incsearch
+function! s:config_fuzzyall(...) abort
+  return extend(copy({
+  \   'converters': [
+  \     incsearch#config#fuzzy#converter(),
+  \   ],
+  \ }), get(a:, 1, {}))
+endfunction
+" \     incsearch#config#fuzzyspell#converter()
+
+noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
+noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+
+" map /  <Plug>(incsearch-forward)
+" map ?  <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
+" map <Leader>/ <Plug>(incsearch-fuzzy-/)
+" map <Leader>? <Plug>(incsearch-fuzzy-?)
+" map <Leader>g/ <Plug>(incsearch-fuzzy-stay)
 
 " Argumentative
 nmap [; <Plug>Argumentative_Prev
