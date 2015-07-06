@@ -28,8 +28,6 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/syntastic'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'haya14busa/incsearch-fuzzy.vim'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
@@ -109,11 +107,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " search with Ack for word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w>
 " Resize window height
-nnoremap = :resize +2<CR>
-nnoremap - :resize -2<CR>
+nnoremap <silent> = :resize +2<CR>
+nnoremap <silent> - :resize -2<CR>
 " And width..
-nnoremap + :vert resize +2<CR>
-nnoremap _ :vert resize -2<CR>
+nnoremap <silent> + :vert resize +2<CR>
+nnoremap <silent> _ :vert resize -2<CR>
 
 
 " Toggle comment with Leader-c
@@ -172,28 +170,6 @@ augroup BWCCreateDir
     autocmd!
     autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
-
-
-" Incsearch
-function! s:config_fuzzyall(...) abort
-  return extend(copy({
-  \   'converters': [
-  \     incsearch#config#fuzzy#converter(),
-  \   ],
-  \ }), get(a:, 1, {}))
-endfunction
-" \     incsearch#config#fuzzyspell#converter()
-
-noremap <silent><expr> / incsearch#go(<SID>config_fuzzyall())
-noremap <silent><expr> ? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-noremap <silent><expr> g? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
-
-" map /  <Plug>(incsearch-forward)
-" map ?  <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
-" map <Leader>/ <Plug>(incsearch-fuzzy-/)
-" map <Leader>? <Plug>(incsearch-fuzzy-?)
-" map <Leader>g/ <Plug>(incsearch-fuzzy-stay)
 
 " Argumentative
 nmap [; <Plug>Argumentative_Prev
