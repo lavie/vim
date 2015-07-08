@@ -21,7 +21,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 " Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
-" Plugin 'nvie/vim-flake8'
+Plugin 'nvie/vim-flake8'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
@@ -101,6 +101,7 @@ nnoremap <Leader>t :tabedit
 
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
+
 
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
