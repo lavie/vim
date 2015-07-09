@@ -21,7 +21,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bling/vim-airline'
 " Plugin 'elzr/vim-json'
 Plugin 'alfredodeza/pytest.vim'
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
@@ -29,6 +29,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'scrooloose/syntastic'
 Plugin 'nelstrom/vim-qargs'
+Plugin 'klen/python-mode'
 Plugin 'ervandew/supertab'
 Plugin 'terryma/vim-expand-region'
 Plugin 'mhinz/vim-sayonara'
@@ -72,7 +73,7 @@ nmap <Leader>p :<C-U>CtrlP<CR>
 if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
-let g:ctrlp_custom_ignore = '\v(dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.egg-info)$'
+let g:ctrlp_custom_ignore = '\v(dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
 
 " Colors
 :colorscheme desert
@@ -145,9 +146,17 @@ com! DiffSaved call s:DiffWithSaved()
 " Python (Jedi-VIM)
 " let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
+
+" Flake8
+" autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
+
+" pymode
+let g:pymode_options_max_line_length=120
+let g:pymode_folding=0
+let g:pymode_lint_ignore = "W0401"
 
 " Tagbar
 "noremap <F8> :TagbarOpenAutoClose<CR> 
