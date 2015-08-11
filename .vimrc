@@ -69,7 +69,7 @@ set selection=inclusive
 " Enable CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
-nmap <Leader>p :<C-U>CtrlP<CR>
+nmap <Leader>p :<C-U>CtrlPMixed<CR>
 if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
