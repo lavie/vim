@@ -28,6 +28,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'mhinz/vim-startify'
 Plugin 'scrooloose/syntastic'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'klen/python-mode'
@@ -75,6 +76,8 @@ if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
 let g:ctrlp_custom_ignore = '\v(dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
+" I don't like MRU, and I see no other way to disable it.
+let g:ctrlp_mruf_max = 0
 
 " Colors
 :colorscheme desert
@@ -117,6 +120,12 @@ nnoremap <silent> + :vert resize +2<CR>
 nnoremap <silent> _ :vert resize -2<CR>
 
 
+
+" Startify
+
+
+let g:startify_bookmarks = [ '~/.bash_profile', '~/Dropbox/sparta/core', '~/Dropbox/optibus/armada', '/etc/hosts' ]
+
 " Toggle comment with Leader-c
 nmap <Leader>c gcc
 vmap <Leader>c gcc
@@ -157,7 +166,9 @@ com! Prettyjs call JsBeautify()
 " pymode
 let g:pymode_options_max_line_length=120
 let g:pymode_folding=0
+let g:pymode_rope_complete_on_dot=0
 let g:pymode_lint_ignore = "W0401"
+let g:pymode_doc = 0
 
 " Tagbar
 "noremap <F8> :TagbarOpenAutoClose<CR> 
