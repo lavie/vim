@@ -11,36 +11,30 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'scrooloose/nerdtree'
-"Plugin 'majutsushi/tagbar' " Slow...
 "Plugin 'airblade/vim-gitgutter' " This seems very slow...
-" Plugin 'lukaszkorecki/coffeetags'
-Plugin 'tpope/vim-surround'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'bling/vim-airline'
-" Plugin 'elzr/vim-json'
-Plugin 'alfredodeza/pytest.vim'
-" Plugin 'nvie/vim-flake8'
-Plugin 'rking/ag.vim'
-Plugin 'matze/vim-move'
-Plugin 'tpope/vim-fugitive'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'mhinz/vim-startify'
-Plugin 'scrooloose/syntastic'
-Plugin 'nelstrom/vim-qargs'
-Plugin 'klen/python-mode'
-Plugin 'ervandew/supertab'
-Plugin 'terryma/vim-expand-region'
-Plugin 'mhinz/vim-sayonara'
-Plugin 'maksimr/vim-jsbeautify'
-" Plugin 'einars/js-beautify'
-Plugin 'ctrlp.vim'
+"Plugin 'majutsushi/tagbar' " Slow...
 Bundle 'chase/vim-ansible-yaml'
-"
-"
+Bundle 'scrooloose/nerdtree'
+Plugin 'alfredodeza/pytest.vim'
+Plugin 'bling/vim-airline'
+Plugin 'bruno-/vim-line'
+Plugin 'ctrlp.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ervandew/supertab'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'klen/python-mode'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'matze/vim-move'
+Plugin 'mhinz/vim-sayonara'
+" Plugin 'mhinz/vim-startify'
+Plugin 'nelstrom/vim-qargs'
+Plugin 'rking/ag.vim'
+" Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -75,7 +69,7 @@ nmap <Leader>p :<C-U>CtrlPMixed<CR>
 if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
-let g:ctrlp_custom_ignore = '\v(dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
+let g:ctrlp_custom_ignore = '\v(dist|dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
 " I don't like MRU, and I see no other way to disable it.
 let g:ctrlp_mruf_max = 0
 
@@ -128,13 +122,14 @@ let g:startify_bookmarks = [ '~/.bash_profile', '~/Dropbox/sparta/core', '~/Drop
 
 " Toggle comment with Leader-c
 nmap <Leader>c gcc
-vmap <Leader>c gcc
+vmap <Leader>c gc
 
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 
 " Abbreviations
+cabbrev pla PymodeLintAuto
 cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
@@ -165,6 +160,7 @@ com! Prettyjs call JsBeautify()
 
 " pymode
 let g:pymode_options_max_line_length=120
+let g:pymode_rope_completion_bind = '<S-Space>'
 let g:pymode_folding=0
 let g:pymode_rope_complete_on_dot=0
 let g:pymode_lint_ignore = "W0401"
