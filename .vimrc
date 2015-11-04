@@ -16,6 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'tpope/vim-dispatch'
 Plugin 'bling/vim-airline'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
@@ -151,6 +152,7 @@ com! DiffSaved call s:DiffWithSaved()
 " Python (Jedi-VIM)
 " let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
 
 " Flake8
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
