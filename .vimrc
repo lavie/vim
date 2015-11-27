@@ -5,17 +5,14 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
-"Plugin 'airblade/vim-gitgutter' " This seems very slow...
-"Plugin 'majutsushi/tagbar' " Slow...
+Plugin 'rizzatti/dash.vim'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'tpope/vim-dispatch'
 Plugin 'bling/vim-airline'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
@@ -26,10 +23,8 @@ Plugin 'klen/python-mode'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'matze/vim-move'
 Plugin 'mhinz/vim-sayonara'
-" Plugin 'mhinz/vim-startify'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'rking/ag.vim'
-" Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-expand-region'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
@@ -78,7 +73,6 @@ let g:ctrlp_mruf_max = 0
 
 inoremap jk <Esc>
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :bd<CR>
 nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <S-Enter> O<Esc>
@@ -87,7 +81,8 @@ noremap <C-h> :bprevious<CR>
 noremap <C-l> :bnext<CR>
 nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
-nnoremap <silent><S-down>  :Sayonara<CR>
+nmap <silent><Leader>q :Sayonara<CR>
+nmap <silent><Leader>Q :Sayonara<CR>
 noremap <C-t> :tabnew 
 nnoremap <S-h> :tabnext<CR>
 nnoremap <S-l> :tabprev<CR>
@@ -100,6 +95,9 @@ nnoremap <Leader>t :tabedit
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
 
+
+" After yank, go to end of selection
+vmap y ygv<ESC>
 
 " replace word under cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -150,12 +148,14 @@ com! DiffSaved call s:DiffWithSaved()
 " Python (Jedi-VIM)
 " let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#show_call_signatures = 0
 
 " Flake8
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
  
 " PrettyJs
 com! Prettyjs call JsBeautify()
+com! Prettyhtml call HtmlBeautify()
 
 " pymode
 let g:pymode_options_max_line_length=120
@@ -188,6 +188,8 @@ augroup BWCCreateDir
     autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 
+nmap <silent> <leader>d <Plug>DashSearch
+
 " Argumentative
 nmap [; <Plug>Argumentative_Prev
 nmap ]; <Plug>Argumentative_Next
@@ -210,5 +212,3 @@ vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
 
 " Sayonara
-nnoremap <leader>q :Sayonara<cr>
-nnoremap <leader>Q :Sayonara!<cr>
