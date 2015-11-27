@@ -35,6 +35,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -73,11 +74,9 @@ let g:ctrlp_custom_ignore = '\v(dist|dockerbuild|node_modules|.ropeproject|\.git
 " I don't like MRU, and I see no other way to disable it.
 let g:ctrlp_mruf_max = 0
 
-" Colors
-:colorscheme desert
-
 " Mappings
 
+inoremap jk <Esc>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :bd<CR>
 nnoremap <C-j> 10jzz
