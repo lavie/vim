@@ -7,6 +7,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
+Plugin 'tpope/vim-salve'
+Plugin 'wellle/visual-split.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'guns/vim-clojure-static'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
 Bundle 'chase/vim-ansible-yaml'
@@ -54,6 +58,10 @@ set wildmode=longest,list
 set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
+
+
+" Visual selection split
+vnoremap <Leader>v :VSSplitAbove<CR>
 
 " For multiple-cursors to function properly
 set selection=inclusive
