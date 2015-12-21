@@ -11,6 +11,7 @@ Plugin 'tpope/vim-salve'
 Plugin 'wellle/visual-split.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-static'
+Plugin 'AndrewRadev/sideways.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
 Bundle 'chase/vim-ansible-yaml'
@@ -119,11 +120,9 @@ nnoremap <silent> + :vert resize +2<CR>
 nnoremap <silent> _ :vert resize -2<CR>
 
 
-
-" Startify
-
-
-let g:startify_bookmarks = [ '~/.bash_profile', '~/Dropbox/sparta/core', '~/Dropbox/optibus/armada', '/etc/hosts' ]
+" Sideways
+nnoremap <Leader>> :SidewaysRight<CR>
+nnoremap <Leader>< :SidewaysLeft<CR>
 
 " Toggle comment with Leader-c
 nmap <Leader>c gcc
