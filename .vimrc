@@ -198,19 +198,6 @@ augroup END
 
 nmap <silent> <leader>d <Plug>DashSearch
 
-" Argumentative
-nmap [; <Plug>Argumentative_Prev
-nmap ]; <Plug>Argumentative_Next
-xnoremap [; <Plug>Argumentative_XPrev
-xnoremap ]; <Plug>Argumentative_XNext
-nnoremap <; <Plug>Argumentative_MoveLeft
-nnoremap >; <Plug>Argumentative_MoveRight
-xnoremap i; <Plug>Argumentative_InnerTextObject
-xnoremap a; <Plug>Argumentative_OuterTextObject
-onoremap i; <Plug>Argumentative_OpPendingInnerTextObject
-onoremap a; <Plug>Argumentative_OpPendingOuterTextObject
-
-
 source ~/.vim/bufonly.vim
 
 " vim-move
