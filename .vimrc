@@ -137,6 +137,7 @@ cabbrev pla PymodeLintAuto
 cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
+cabbrev bo BufOnly
 ab ipy import IPython; IPython.embed()
 
 " " Make sure bash_profile is loaded in vim.
