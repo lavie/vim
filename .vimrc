@@ -59,7 +59,7 @@ set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
 
-
+colorscheme desert
 " Visual selection split
 vnoremap <Leader>v :VSSplitAbove<CR>
 
