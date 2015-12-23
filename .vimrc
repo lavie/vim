@@ -62,6 +62,7 @@ set cursorline
 colorscheme desert
 " Visual selection split
 vnoremap <Leader>v :VSSplitAbove<CR>
+nnoremap <Leader>bo :BufOnly<CR>
 
 " For multiple-cursors to function properly
 set selection=inclusive
