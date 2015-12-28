@@ -23,9 +23,9 @@ Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
+Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'klen/python-mode'
-Plugin 'maksimr/vim-jsbeautify'
 Plugin 'matze/vim-move'
 Plugin 'mhinz/vim-sayonara'
 Plugin 'nelstrom/vim-qargs'
@@ -161,10 +161,6 @@ let g:jedi#show_call_signatures = 0
 " Flake8
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
  
-" PrettyJs
-com! Prettyjs call JsBeautify()
-com! Prettyhtml call HtmlBeautify()
-
 " pymode
 let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
