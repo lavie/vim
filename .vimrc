@@ -8,6 +8,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'tpope/vim-salve'
+Plugin 'scrooloose/syntastic'
 Plugin 'wellle/visual-split.vim'
 Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-static'
@@ -21,6 +22,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'bling/vim-airline'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
+Plugin 'assaflavie/Dockerfile.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'ervandew/supertab'
 Plugin 'pangloss/vim-javascript'
@@ -103,6 +105,18 @@ nnoremap <Leader>t :tabedit
 
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
+
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Requires: npm install -g eslint babel-eslint
+let g:syntastic_javascript_checkers = ['eslint']
 
 
 " After yank, go to end of selection
