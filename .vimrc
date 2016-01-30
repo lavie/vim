@@ -80,6 +80,11 @@ let g:ctrlp_custom_ignore = '\v(dist|dockerbuild|node_modules|.ropeproject|\.git
 " I don't like MRU, and I see no other way to disable it.
 let g:ctrlp_mruf_max = 0
 
+
+" highlight only lines longer than 120
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 " Mappings
 
 inoremap jk <Esc>
