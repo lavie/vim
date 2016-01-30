@@ -61,6 +61,10 @@ set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
 
+" Highlight when a line ends with spaces or starts with tab
+exec "set listchars=tab:>~,trail:\uB7,nbsp:~"
+set list
+
 colorscheme desert
 " Visual selection split
 vnoremap <Leader>v :VSSplitAbove<CR>
