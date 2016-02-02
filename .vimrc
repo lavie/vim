@@ -160,8 +160,9 @@ cabbrev pla PymodeLintAuto
 cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
+cabbrev jsp :%!python -m json.tool
 cabbrev bo BufOnly
-ab ipy import IPython; IPython.embed()
+ab ipy __import__("IPython").embed()
 
 " " Make sure bash_profile is loaded in vim.
 set shell=bash\ --login
@@ -218,6 +219,9 @@ augroup END
 nmap <silent> <leader>d <Plug>DashSearch
 
 source ~/.vim/bufonly.vim
+
+
+autocmd BufRead,BufNewFile *.as set filetype=as3
 
 " vim-move
 let g:move_map_keys = 0
