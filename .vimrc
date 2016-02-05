@@ -15,6 +15,8 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'elzr/vim-json'
+Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
@@ -43,7 +45,11 @@ call vundle#end()            " required
 filetype plugin on
 filetype plugin indent on
 syntax on
+au BufNewFile,BufRead *.json set filetype=json
+autocmd FileType json setlocal shiftwidth=2 tabstop=2
+
 set ruler
+
 set number
 set incsearch
 set hlsearch
@@ -61,9 +67,6 @@ set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
 
-" Highlight when a line ends with spaces or starts with tab
-exec "set listchars=tab:>~,trail:\uB7,nbsp:~"
-set list
 
 colorscheme desert
 " Visual selection split
@@ -103,14 +106,14 @@ nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
 nmap <silent><Leader>q :Sayonara<CR>
 nmap <silent><Leader>Q :Sayonara<CR>
-noremap <C-t> :tabnew 
+noremap <C-t> :tabnew
 nnoremap <S-h> :tabnext<CR>
 nnoremap <S-l> :tabprev<CR>
 
 noremap j gj
 noremap k gk
 nnoremap <Leader>h :noh<CR>
-nnoremap <Leader>t :tabedit 
+nnoremap <Leader>t :tabedit
 
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
@@ -160,6 +163,11 @@ cabbrev pla PymodeLintAuto
 cabbrev h tab help
 cabbrev E Explore
 cabbrev a Ag
+
+
+" JSON
+let g:vim_json_syntax_conceal = 0
+
 cabbrev jsp :%!python -m json.tool
 cabbrev bo BufOnly
 ab ipy __import__("IPython").embed()
@@ -184,7 +192,7 @@ let g:jedi#show_call_signatures = 0
 
 " Flake8
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
- 
+
 " pymode
 let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
@@ -194,7 +202,7 @@ let g:pymode_lint_ignore = "W0401"
 let g:pymode_doc = 0
 
 " Tagbar
-"noremap <F8> :TagbarOpenAutoClose<CR> 
+"noremap <F8> :TagbarOpenAutoClose<CR>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
