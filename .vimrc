@@ -15,7 +15,9 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'dkprice/vim-easygrep'
 Plugin 'elzr/vim-json'
+Plugin 'mbbill/undotree'
 Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
@@ -67,10 +69,11 @@ set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
 
+vnoremap // y/<C-R>"<CR>
 
 colorscheme desert
 " Visual selection split
-vnoremap <Leader>v :VSSplitAbove<CR>
+vnoremap <Leader>vs :VSSplitAbove<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 
 " For multiple-cursors to function properly
@@ -83,7 +86,7 @@ nmap <Leader>p :<C-U>CtrlPMixed<CR>
 if (exists("g:ctrlp_custom_ignore"))
     unlet g:ctrlp_custom_ignore
 endif
-let g:ctrlp_custom_ignore = '\v(dist|dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
+let g:ctrlp_custom_ignore = '\v(dist|reports/node/lib|_meta/_tmp|dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
 " I don't like MRU, and I see no other way to disable it.
 let g:ctrlp_mruf_max = 0
 
@@ -139,11 +142,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " search with Ack for word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w>
 " Resize window height
-nnoremap <silent> = :resize +2<CR>
-nnoremap <silent> - :resize -2<CR>
-" And width..
-nnoremap <silent> + :vert resize +2<CR>
-nnoremap <silent> _ :vert resize -2<CR>
+" nnoremap <silent> <C-=> :resize +2<CR>
+" nnoremap <silent> <C--> :resize -2<CR>
+" " And width..
+" nnoremap <silent> + :vert resize +2<CR>
+" nnoremap <silent> _ :vert resize -2<CR>
 
 
 " Sideways
