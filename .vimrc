@@ -116,10 +116,13 @@ nnoremap <S-l> :tabprev<CR>
 noremap j gj
 noremap k gk
 nnoremap <Leader>h :noh<CR>
+nnoremap <BS> :noh<CR>
 nnoremap <Leader>t :tabedit
 
+" Vimrc itself
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
+autocmd bufwritepost .vimrc source $MYVIMRC
 
 " Syntastic
 let g:syntastic_enable_signs=1
