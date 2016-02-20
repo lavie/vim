@@ -20,9 +20,11 @@ Plugin 'elzr/vim-json'
 Plugin 'mbbill/undotree'
 Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
+Plugin 'qstrahl/vim-dentures'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'tpope/vim-dispatch'
+Plugin 'easymotion/vim-easymotion'
 Plugin 'bling/vim-airline'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
@@ -145,11 +147,11 @@ nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 " search with Ack for word under cursor
 nnoremap <Leader>a :Ag <C-r><C-w>
 " Resize window height
-" nnoremap <silent> <C-=> :resize +2<CR>
-" nnoremap <silent> <C--> :resize -2<CR>
+nnoremap <silent> = :resize +2<CR>
+nnoremap <silent> - :resize -2<CR>
 " " And width..
-" nnoremap <silent> + :vert resize +2<CR>
-" nnoremap <silent> _ :vert resize -2<CR>
+nnoremap <silent> + :vert resize +2<CR>
+nnoremap <silent> _ :vert resize -2<CR>
 
 
 " Sideways
