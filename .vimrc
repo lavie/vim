@@ -17,7 +17,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'elzr/vim-json'
+Plugin 'kana/vim-textobj-user'
+Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'mbbill/undotree'
+Plugin 'assaflavie/vim-textobj-underscore'
 Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
 Plugin 'qstrahl/vim-dentures'
@@ -72,6 +75,15 @@ set guifont=Menlo\ Regular:h14
 set cursorline
 
 vnoremap // y/<C-R>"<CR>
+
+
+
+
+
+" Easy Grep
+let g:EasyGrepRoot = "repository"
+let g:EasyGrepFilesToExclude=".git,node_modules"
+
 
 colorscheme desert
 " Visual selection split
@@ -197,7 +209,11 @@ com! DiffSaved call s:DiffWithSaved()
 " let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#show_call_signatures = 0
+let g:jedi#goto_command = ""
 
+
+" delete last character in line
+nnoremap <silent><Leader>d mt$x`t
 " Flake8
 " autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
 
@@ -208,6 +224,7 @@ let g:pymode_folding=0
 let g:pymode_rope_complete_on_dot=0
 let g:pymode_lint_ignore = "W0401"
 let g:pymode_doc = 0
+let g:pymode_rope_autoimport = 0
 
 " Tagbar
 "noremap <F8> :TagbarOpenAutoClose<CR>
