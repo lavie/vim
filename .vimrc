@@ -15,6 +15,9 @@ Plugin 'guns/vim-clojure-static'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rizzatti/dash.vim'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'elzr/vim-json'
 Plugin 'kana/vim-textobj-user'
@@ -28,7 +31,8 @@ Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
 Plugin 'assaflavie/Dockerfile.vim'
@@ -57,7 +61,6 @@ autocmd FileType json setlocal shiftwidth=2 tabstop=2
 
 set ruler
 
-set number
 set incsearch
 set hlsearch
 set expandtab
@@ -68,6 +71,7 @@ set ignorecase
 set shiftwidth=4
 set hidden
 set relativenumber
+set number
 set smarttab
 set wildmode=longest,list
 set autochdir
@@ -76,16 +80,12 @@ set cursorline
 
 vnoremap // y/<C-R>"<CR>
 
-
-
-
-
 " Easy Grep
 let g:EasyGrepRoot = "repository"
 let g:EasyGrepFilesToExclude=".git,node_modules"
 
 
-colorscheme desert
+colorscheme tayra
 " Visual selection split
 vnoremap <Leader>vs :VSSplitAbove<CR>
 nnoremap <Leader>bo :BufOnly<CR>
@@ -106,11 +106,12 @@ let g:ctrlp_mruf_max = 0
 
 
 " highlight only lines longer than 120
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%121v', 100)
 
 " Mappings
 
+nnoremap <c-f> :%! js-beautify --brace-style=collapse-preserve-inline<cr>
 inoremap jk <Esc>
 nnoremap <Leader>w :w<CR>
 nnoremap <C-j> 10jzz
@@ -143,9 +144,9 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 " Requires: npm install -g eslint babel-eslint
 let g:syntastic_javascript_checkers = ['eslint']
@@ -222,7 +223,8 @@ let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
 let g:pymode_folding=0
 let g:pymode_rope_complete_on_dot=0
-let g:pymode_lint_ignore = "W0401"
+let g:pymode_lint_ignore = "W0401,C0111,I0011"
+let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
 let g:pymode_rope_autoimport = 0
 
@@ -230,9 +232,11 @@ let g:pymode_rope_autoimport = 0
 "noremap <F8> :TagbarOpenAutoClose<CR>
 
 " Airline
+set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_detect_paste=1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 " Create missing directories when saving file to new path
@@ -252,6 +256,23 @@ augroup END
 nmap <silent> <leader>d <Plug>DashSearch
 
 source ~/.vim/bufonly.vim
+
+" Create missing parent dirs on save
+
+function! s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
+
 
 
 autocmd BufRead,BufNewFile *.as set filetype=as3
