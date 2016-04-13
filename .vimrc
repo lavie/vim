@@ -14,6 +14,7 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'guns/vim-clojure-static'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'lpenz/vimcommander'
 Plugin 'rizzatti/dash.vim'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'maksimr/vim-jsbeautify'
@@ -232,6 +233,7 @@ let g:pymode_rope_autoimport = 0
 "noremap <F8> :TagbarOpenAutoClose<CR>
 
 " Airline
+let g:airline_powerline_fonts = 1
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
