@@ -24,6 +24,7 @@ Plugin 'elzr/vim-json'
 Plugin 'kana/vim-textobj-user'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'mbbill/undotree'
+Plugin 'takac/vim-hardtime'
 Plugin 'assaflavie/vim-textobj-underscore'
 Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
@@ -105,6 +106,7 @@ let g:ctrlp_custom_ignore = '\v(dist|reports/node/lib|_meta/_tmp|dockerbuild|nod
 " I don't like MRU, and I see no other way to disable it.
 let g:ctrlp_mruf_max = 0
 
+let g:hardtime_default_on = 1
 
 " highlight only lines longer than 120
 " highlight ColorColumn ctermbg=magenta
