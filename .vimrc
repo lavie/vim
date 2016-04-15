@@ -133,7 +133,6 @@ nnoremap <S-l> :tabprev<CR>
 
 noremap j gj
 noremap k gk
-nnoremap <Leader>h :noh<CR>
 nnoremap <BS> :noh<CR>
 nnoremap <Leader>t :tabedit
 
@@ -181,7 +180,7 @@ vmap <Leader>c gc
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-
+noremap <Leader>ht :HardTimeToggle<CR>
 " Abbreviations
 cabbrev pla PymodeLintAuto
 cabbrev h tab help
