@@ -1,4 +1,9 @@
+" TODO:
+" Try FZF with ripgrep
+" Try lexima
+
 let mapleader = "\<space>"
+set backspace=indent,eol,start
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -17,6 +22,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'lpenz/vimcommander'
 Plugin 'rizzatti/dash.vim'
 Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'junegunn/fzf.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'dkprice/vim-easygrep'
@@ -24,7 +30,7 @@ Plugin 'elzr/vim-json'
 Plugin 'kana/vim-textobj-user'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'mbbill/undotree'
-Plugin 'takac/vim-hardtime'
+" Plugin 'takac/vim-hardtime'
 Plugin 'assaflavie/vim-textobj-underscore'
 Plugin 'Align'
 Bundle 'chase/vim-ansible-yaml'
@@ -44,10 +50,12 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'klen/python-mode'
 Plugin 'matze/vim-move'
+Plugin 'wimstefan/Lightning'
 Plugin 'mhinz/vim-sayonara'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'rking/ag.vim'
 Plugin 'terryma/vim-expand-region'
+Plugin 'YankRing.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -60,6 +68,7 @@ filetype plugin indent on
 syntax on
 au BufNewFile,BufRead *.json set filetype=json
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType as3 setlocal smartindent
 
 set ruler
 
@@ -80,6 +89,8 @@ set autochdir
 set guifont=Menlo\ Regular:h14
 set cursorline
 
+set rtp+=/usr/local/opt/fzf
+
 vnoremap // y/<C-R>"<CR>
 
 " Easy Grep
@@ -92,27 +103,36 @@ colorscheme tayra
 vnoremap <Leader>vs :VSSplitAbove<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 
+nnoremap <C-_> mb$x`b
+
 " For multiple-cursors to function properly
 set selection=inclusive
 
+let g:fzf_command_prefix = 'Fzf'
+
 " Enable CtrlP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_show_hidden = 1
-nmap <Leader>p :<C-U>CtrlPMixed<CR>
-if (exists("g:ctrlp_custom_ignore"))
-    unlet g:ctrlp_custom_ignore
-endif
-let g:ctrlp_custom_ignore = '\v(dist|reports/node/lib|_meta/_tmp|dockerbuild|node_modules|.ropeproject|\.git|\.pyc|\.swp|\.egg-info)$'
-" I don't like MRU, and I see no other way to disable it.
-let g:ctrlp_mruf_max = 0
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+" let g:ctrlp_show_hidden = 1
+nmap <Leader>p :FzfFiles<CR>
+" if (exists("g:ctrlp_custom_ignore"))
+"     unlet g:ctrlp_custom_ignore
+" endif
+" let g:ctrlp_custom_ignore = '\v(dist|reports/node/lib|_meta/_tmp|dockerbuild|node_modules|.ropeproject|\.map|\.git|\.pyc|\.swp|\.egg-info)$'
+" " I don't like MRU, and I see no other way to disable it.
+" let g:ctrlp_mruf_max = 0
 
 let g:hardtime_default_on = 1
+let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
+" nnoremap <Leader>ht :HardTimeToggle<CR>
 
 " highlight only lines longer than 120
 " highlight ColorColumn ctermbg=magenta
 " call matchadd('ColorColumn', '\%121v', 100)
 
 " Mappings
+
+cabbrev non set nonumber <BAR> :set norelativenumber
+cabbrev trail %s/\s\+$//g
 
 nnoremap <c-f> :%! js-beautify --brace-style=collapse-preserve-inline<cr>
 inoremap jk <Esc>
@@ -146,6 +166,8 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+" Hard time
+let g:hardtime_ignore_quickfix = 1
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -279,6 +301,7 @@ augroup END
 
 
 autocmd BufRead,BufNewFile *.as set filetype=as3
+autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
 
 " vim-move
 let g:move_map_keys = 0
@@ -287,3 +310,5 @@ vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
 
 " Sayonara
+"
+autocmd filetype crontab setlocal nobackup nowritebackup
