@@ -16,6 +16,7 @@ call vundle#begin()
 " Plugin 'davidhalter/jedi-vim'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
+Plugin 'b4winckler/vim-angry'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'Align'
 Plugin 'AndrewRadev/sideways.vim'
