@@ -12,63 +12,72 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'tpope/vim-salve'
-Plugin 'scrooloose/syntastic'
-Plugin 'wellle/visual-split.vim'
-Plugin 'tpope/vim-fireplace'
-Plugin 'guns/vim-clojure-static'
-Plugin 'AndrewRadev/sideways.vim'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'lpenz/vimcommander'
-Plugin 'rizzatti/dash.vim'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'junegunn/fzf.vim'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'elzr/vim-json'
-Plugin 'kana/vim-textobj-user'
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'mbbill/undotree'
-" Plugin 'takac/vim-hardtime'
-Plugin 'assaflavie/vim-textobj-underscore'
-Plugin 'Align'
+
+" Plugin 'davidhalter/jedi-vim'
 Bundle 'chase/vim-ansible-yaml'
-Plugin 'qstrahl/vim-dentures'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
-Plugin 'tpope/vim-dispatch'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'Align'
+Plugin 'AndrewRadev/sideways.vim'
+Plugin 'assaflavie/Dockerfile.vim'
+Plugin 'assaflavie/vim-textobj-underscore'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
-Plugin 'assaflavie/Dockerfile.vim'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'deris/vim-textobj-ipmac'
+Plugin 'dkprice/vim-easygrep'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
-Plugin 'pangloss/vim-javascript'
+Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'fatih/vim-go'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'guns/vim-clojure-static'
+Plugin 'haya14busa/vim-auto-programming'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'junegunn/fzf.vim'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'klen/python-mode'
+Plugin 'lpenz/vimcommander'
+Plugin 'maksimr/vim-jsbeautify'
 Plugin 'matze/vim-move'
-Plugin 'wimstefan/Lightning'
+Plugin 'mbbill/undotree'
 Plugin 'mhinz/vim-sayonara'
+Plugin 'mileszs/ack.vim'
 Plugin 'nelstrom/vim-qargs'
-Plugin 'rking/ag.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'qstrahl/vim-dentures'
+Plugin 'scrooloose/syntastic'
+Plugin 'rizzatti/dash.vim'
+Plugin 'suan/vim-instant-markdown'
 Plugin 'terryma/vim-expand-region'
-Plugin 'YankRing.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-surround'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'SirVer/ultisnips'
+Plugin 'wellle/visual-split.vim'
+Plugin 'wimstefan/Lightning'
+Plugin 'YankRing.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin on
 filetype plugin indent on
 syntax on
-au BufNewFile,BufRead *.json set filetype=json
+aut BufNewFile,BufRead *.json set filetype=json
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType as3 setlocal smartindent
+autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4
+autocmd filetype crontab setlocal nobackup nowritebackup
 
 set ruler
 
@@ -91,7 +100,6 @@ set cursorline
 
 set rtp+=/usr/local/opt/fzf
 
-vnoremap // y/<C-R>"<CR>
 
 " Easy Grep
 let g:EasyGrepRoot = "repository"
@@ -99,21 +107,24 @@ let g:EasyGrepFilesToExclude=".git,node_modules"
 
 
 colorscheme tayra
-" Visual selection split
-vnoremap <Leader>vs :VSSplitAbove<CR>
-nnoremap <Leader>bo :BufOnly<CR>
 
-nnoremap <C-_> mb$x`b
 
 " For multiple-cursors to function properly
 set selection=inclusive
 
 let g:fzf_command_prefix = 'Fzf'
 
+
 " Enable CtrlP
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
 " let g:ctrlp_show_hidden = 1
-nmap <Leader>p :FzfFiles<CR>
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+noremap <C-h> :bprevious<CR>
+noremap <C-l> :bnext<CR>
+noremap <C-t> :tabnew
+noremap <F2> :NERDTreeToggle<CR>
+noremap j gj
+noremap k gk
 " if (exists("g:ctrlp_custom_ignore"))
 "     unlet g:ctrlp_custom_ignore
 " endif
@@ -121,9 +132,6 @@ nmap <Leader>p :FzfFiles<CR>
 " " I don't like MRU, and I see no other way to disable it.
 " let g:ctrlp_mruf_max = 0
 
-let g:hardtime_default_on = 1
-let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
-" nnoremap <Leader>ht :HardTimeToggle<CR>
 
 " highlight only lines longer than 120
 " highlight ColorColumn ctermbg=magenta
@@ -134,75 +142,36 @@ let g:hardtime_ignore_buffer_patterns = [ "NERD.*" ]
 cabbrev non set nonumber <BAR> :set norelativenumber
 cabbrev trail %s/\s\+$//g
 
-nnoremap <c-f> :%! js-beautify --brace-style=collapse-preserve-inline<cr>
-inoremap jk <Esc>
-nnoremap <Leader>w :w<CR>
-nnoremap <C-j> 10jzz
-nnoremap <C-k> 10kzz
-nnoremap <S-Enter> O<Esc>
-noremap <F2> :NERDTreeToggle<CR>
-noremap <C-h> :bprevious<CR>
-noremap <C-l> :bnext<CR>
-nnoremap <S-left> :bp<CR>
-nnoremap <S-right> :bn<CR>
-nmap <silent><Leader>q :Sayonara<CR>
-nmap <silent><Leader>Q :Sayonara<CR>
-noremap <C-t> :tabnew
-nnoremap <S-h> :tabnext<CR>
-nnoremap <S-l> :tabprev<CR>
-
-noremap j gj
-noremap k gk
-nnoremap <BS> :noh<CR>
-nnoremap <Leader>t :tabedit
 
 " Vimrc itself
-nnoremap <Leader>ve :e $MYVIMRC<CR>
-nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
-autocmd bufwritepost .vimrc source $MYVIMRC
+augroup my_commands
+    autocmd!
+    autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd bufwritepost *.go :GoLint
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+    autocmd BufRead,BufNewFile *.as set filetype=as3
+    autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
+augroup END
 
 " Syntastic
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
-" Hard time
-let g:hardtime_ignore_quickfix = 1
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
 " Requires: npm install -g eslint babel-eslint
 let g:syntastic_javascript_checkers = ['eslint']
 
 
 " After yank, go to end of selection
-vmap y ygv<ESC>
 
-" replace word under cursor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-" search with Ack for word under cursor
-nnoremap <Leader>a :Ag <C-r><C-w>
+let g:ackprg = "ag --vimgrep"
+
 " Resize window height
-nnoremap <silent> = :resize +2<CR>
-nnoremap <silent> - :resize -2<CR>
 " " And width..
-nnoremap <silent> + :vert resize +2<CR>
-nnoremap <silent> _ :vert resize -2<CR>
 
 
 " Sideways
-nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <Leader>< :SidewaysLeft<CR>
 
-" Toggle comment with Leader-c
-nmap <Leader>c gcc
-vmap <Leader>c gc
-
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-noremap <Leader>ht :HardTimeToggle<CR>
 " Abbreviations
 cabbrev pla PymodeLintAuto
 cabbrev h tab help
@@ -237,11 +206,6 @@ let g:jedi#show_call_signatures = 0
 let g:jedi#goto_command = ""
 
 
-" delete last character in line
-nnoremap <silent><Leader>d mt$x`t
-" Flake8
-" autocmd FileType python map <buffer> <F3> :call Flake8()<CR>
-
 " pymode
 let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
@@ -252,8 +216,15 @@ let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
 let g:pymode_rope_autoimport = 0
 
+
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+"
+"
+" set completefunc=autoprogramming#complete
+
 " Tagbar
-"noremap <F8> :TagbarOpenAutoClose<CR>
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -273,12 +244,6 @@ function! s:MkNonExDir(file, buf)
         endif
     endif
 endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd! BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-
-nmap <silent> <leader>d <Plug>DashSearch
 
 source ~/.vim/bufonly.vim
 
@@ -292,23 +257,57 @@ function! s:MkNonExDir(file, buf)
         endif
     endif
 endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
 
-
-
-
-autocmd BufRead,BufNewFile *.as set filetype=as3
-autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
 
 " vim-move
 let g:move_map_keys = 0
 
-vmap <C-j> <Plug>MoveBlockDown
-vmap <C-k> <Plug>MoveBlockUp
 
 " Sayonara
 "
-autocmd filetype crontab setlocal nobackup nowritebackup
+
+
+let g:instant_markdown_slow = 1
+"noremap <F8> :TagbarOpenAutoClose<CR>
+nnoremap <BS> :noh<CR>
+nnoremap <C-_> mb$x`b
+nnoremap <c-f> :%! js-beautify --brace-style=collapse-preserve-inline<cr>
+nnoremap <C-j> 10jzz
+nnoremap <C-k> 10kzz
+nnoremap <Leader>< :SidewaysLeft<CR>
+nnoremap <Leader>> :SidewaysRight<CR>
+nnoremap <Leader>a :Ack! <C-r><C-w>
+nnoremap <Leader>bo :BufOnly<CR>
+nnoremap <Leader>c gcc
+nnoremap <Leader>gb :w<CR>:GoBuild<CR>
+nnoremap <Leader>gd :w<CR>:GoDef<CR>
+nnoremap <Leader>gf :w<CR>:GoDecls<CR>
+nnoremap <Leader>gi :GoImport 
+nnoremap <Leader>gl :w<CR>:GoLint<CR>
+nnoremap <Leader>gr :GoRename 
+nnoremap <Leader>gt :w<CR>:GoTest<CR>
+nnoremap <Leader>gtf :w<CR>:GoTestFunc<CR>
+nnoremap <Leader>o :FzfBuffers<CR>
+nnoremap <Leader>p :FzfFiles<CR>
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+nnoremap <Leader>ve :vsplit $MYVIMRC<CR>
+nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <S-Enter> O<Esc>
+nnoremap <S-left> :bp<CR>
+nnoremap <S-right> :bn<CR>
+nnoremap <silent> + :vert resize +2<CR>
+nnoremap <silent> - :resize -2<CR>
+nnoremap <silent> <leader>d <Plug>DashSearch
+nnoremap <silent> = :resize +2<CR>
+nnoremap <silent> _ :vert resize -2<CR>
+nnoremap <silent><Leader>q :Sayonara<CR>
+nnoremap <silent><Leader>Q :Sayonara<CR>
+vnoremap // y/<C-R>"<CR>
+vnoremap <C-j> <Plug>MoveBlockDown
+vnoremap <C-k> <Plug>MoveBlockUp
+vnoremap <C-v> <Plug>(expand_region_shrink)
+vnoremap <Leader>c gc
+vnoremap <Leader>vs :VSSplitAbove<CR>
+vnoremap v <Plug>(expand_region_expand)
+vnoremap y ygv<ESC>
