@@ -1,4 +1,4 @@
-" TODO:
+"nk TODO:
 " Try FZF with ripgrep
 " Try lexima
 
@@ -12,19 +12,20 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
+let g:angry_disable_maps=1
 
 " Plugin 'davidhalter/jedi-vim'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
-Plugin 'b4winckler/vim-angry'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'Align'
 Plugin 'AndrewRadev/sideways.vim'
 Plugin 'assaflavie/Dockerfile.vim'
+Plugin 'assaflavie/vim-textobj-ipmac'
 Plugin 'assaflavie/vim-textobj-underscore'
+Plugin 'b4winckler/vim-angry'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
-Plugin 'deris/vim-textobj-ipmac'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'editorconfig/editorconfig-vim'
@@ -32,7 +33,6 @@ Plugin 'elzr/vim-json'
 Plugin 'ervandew/supertab'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'fatih/vim-go'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'guns/vim-clojure-static'
 Plugin 'haya14busa/vim-auto-programming'
@@ -51,8 +51,10 @@ Plugin 'mileszs/ack.vim'
 Plugin 'nelstrom/vim-qargs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'qstrahl/vim-dentures'
-Plugin 'scrooloose/syntastic'
 Plugin 'rizzatti/dash.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'SirVer/ultisnips'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'terryma/vim-expand-region'
 Plugin 'terryma/vim-multiple-cursors'
@@ -64,10 +66,9 @@ Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'SirVer/ultisnips'
 Plugin 'wellle/visual-split.vim'
 Plugin 'wimstefan/Lightning'
-Plugin 'YankRing.vim'
+" Plugin 'YankRing.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -162,6 +163,10 @@ let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 " Requires: npm install -g eslint babel-eslint
 let g:syntastic_javascript_checkers = ['eslint']
 
+vmap <silent> aar <Plug>AngryOuterPrefix
+omap <silent> aar <Plug>AngryOuterPrefix
+vmap <silent> iar <Plug>AngryInnerPrefix
+omap <silent> iar <Plug>AngryInnerPrefix
 
 " After yank, go to end of selection
 
