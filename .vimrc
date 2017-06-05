@@ -1,7 +1,3 @@
-"nk TODO:
-" Try FZF with ripgrep
-" Try lexima
-
 let mapleader = "\<space>"
 set backspace=indent,eol,start
 set nocompatible              " be iMproved, required
@@ -14,18 +10,23 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 let g:angry_disable_maps=1
 
-" Plugin 'davidhalter/jedi-vim'
 Bundle 'chase/vim-ansible-yaml'
 Bundle 'scrooloose/nerdtree'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'hashivim/vim-terraform'
 Plugin 'Align'
 Plugin 'AndrewRadev/sideways.vim'
+Plugin 'beloglazov/vim-textobj-quotes'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'assaflavie/Dockerfile.vim'
+Plugin 'vim-scripts/Greplace.vim'
 Plugin 'assaflavie/vim-textobj-ipmac'
 Plugin 'assaflavie/vim-textobj-underscore'
+" Plugin 'w0rp/ale'
 Plugin 'b4winckler/vim-angry'
 Plugin 'bruno-/vim-line'
 Plugin 'ctrlp.vim'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'dkprice/vim-easygrep'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'editorconfig/editorconfig-vim'
@@ -52,7 +53,6 @@ Plugin 'nelstrom/vim-qargs'
 Plugin 'pangloss/vim-javascript'
 Plugin 'qstrahl/vim-dentures'
 Plugin 'rizzatti/dash.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'suan/vim-instant-markdown'
@@ -60,15 +60,16 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-salve'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vimwiki/vimwiki'
 Plugin 'wellle/visual-split.vim'
 Plugin 'wimstefan/Lightning'
-" Plugin 'YankRing.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,6 +108,7 @@ set rtp+=/usr/local/opt/fzf
 let g:EasyGrepRoot = "repository"
 let g:EasyGrepFilesToExclude=".git,node_modules"
 
+let g:terraform_align=1
 
 colorscheme tayra
 
@@ -142,14 +144,19 @@ noremap k gk
 " Mappings
 
 cabbrev non set nonumber <BAR> :set norelativenumber
-cabbrev trail %s/\s\+$//g
+
+function! StripTrailingWS()
+    %s/\s\+$//e
+endfunction
 
 
 " Vimrc itself
 augroup my_commands
     autocmd!
+    autocmd BufWritePre * call StripTrailingWS()
     autocmd bufwritepost .vimrc source $MYVIMRC
     autocmd bufwritepost *.go :GoLint
+    autocmd bufwritepost *.tf :TerraformFmt
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     autocmd BufRead,BufNewFile *.as set filetype=as3
     autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
@@ -167,6 +174,8 @@ vmap <silent> aar <Plug>AngryOuterPrefix
 omap <silent> aar <Plug>AngryOuterPrefix
 vmap <silent> iar <Plug>AngryInnerPrefix
 omap <silent> iar <Plug>AngryInnerPrefix
+
+vnoremap Y "*y
 
 " After yank, go to end of selection
 
@@ -213,7 +222,7 @@ let g:jedi#goto_command = ""
 
 
 " pymode
-let g:pymode_options_max_line_length=120
+let g:pymode_options_max_line_length=80
 let g:pymode_rope_completion_bind = '<S-Space>'
 let g:pymode_folding=0
 let g:pymode_rope_complete_on_dot=0
@@ -240,6 +249,8 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_detect_paste=1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+
+set directory^=$HOME/.vim/tmp//
 
 " Create missing directories when saving file to new path
 function! s:MkNonExDir(file, buf)
@@ -285,23 +296,47 @@ nnoremap <Leader>> :SidewaysRight<CR>
 nnoremap <Leader>a :Ack! <C-r><C-w>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
-nnoremap <Leader>gb :w<CR>:GoBuild<CR>
-nnoremap <Leader>gd :w<CR>:GoDef<CR>
-nnoremap <Leader>gf :w<CR>:GoDecls<CR>
-nnoremap <Leader>gi :GoImport 
-nnoremap <Leader>gl :w<CR>:GoLint<CR>
-nnoremap <Leader>gr :GoRename 
-nnoremap <Leader>gt :w<CR>:GoTest<CR>
-nnoremap <Leader>gtf :w<CR>:GoTestFunc<CR>
+nnoremap <Leader>tff :TerraformFmt<CR>
+
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+
+
+" inside/around slashes (text object)
+onoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+onoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+xnoremap <silent> i/ :<C-U>normal! T/vt/<CR>
+xnoremap <silent> a/ :<C-U>normal! F/vf/<CR>
+
+" inside around semi-colon
+onoremap <silent> i; :<C-U>normal! T;vt;<CR>
+onoremap <silent> a; :<C-U>normal! F;vf;<CR>
+xnoremap <silent> i; :<C-U>normal! T;vt;<CR>
+xnoremap <silent> a; :<C-U>normal! F;vf;<CR>
+
+nnoremap <leader>fa :FzfAg<CR>
+nnoremap <leader>fl :FzfBLines<CR>
+au FileType go nmap <leader>gx <Plug>(go-run)<CR>
+au FileType go nmap <Leader>gb :w<CR>:GoBuild<CR>
+au FileType go nmap <Leader>gd :w<CR>:GoDef<CR>
+au FileType go nmap <Leader>gf :w<CR>:GoDecls<CR>
+au FileType go nmap <Leader>gi :GoImport
+au FileType go nmap <Leader>gl :w<CR>:GoLint<CR>
+au FileType go nmap <Leader>gr :GoRename
+au FileType go nmap <Leader>gt :w<CR>:GoTest<CR>
+au FileType go nmap <Leader>gtf :w<CR>:GoTestFunc<CR>
 nnoremap <Leader>o :FzfBuffers<CR>
 nnoremap <Leader>p :FzfFiles<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>ve :vsplit $MYVIMRC<CR>
-nnoremap <Leader>vs :write<cr>:so %<cr>:Sayonara<CR>
+nnoremap <Leader>vs :noautocmd write<cr>:so %<cr>:Sayonara<CR>
+nmap <Leader>vwi <Plug>VimwikiIndex
+nmap <Leader>vws :VimwikiSearch
 nnoremap <Leader>w :w<CR>
 nnoremap <S-Enter> O<Esc>
 nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
+vnoremap <silent><leader>y :w !pbcopy<CR>
 nnoremap <silent> + :vert resize +2<CR>
 nnoremap <silent> - :resize -2<CR>
 nnoremap <silent> <leader>d <Plug>DashSearch
@@ -314,6 +349,7 @@ vnoremap <C-j> <Plug>MoveBlockDown
 vnoremap <C-k> <Plug>MoveBlockUp
 vnoremap <C-v> <Plug>(expand_region_shrink)
 vnoremap <Leader>c gc
-vnoremap <Leader>vs :VSSplitAbove<CR>
+vnoremap <Leader>vsa :VSSplitAbove<CR>
 vnoremap v <Plug>(expand_region_expand)
 vnoremap y ygv<ESC>
+nnoremap <Leader>sp :set paste<CR>
