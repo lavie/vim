@@ -4,75 +4,83 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
 " let Vundle manage Vundle, required
-let g:angry_disable_maps=1
+" let g:angry_disable_maps=1
 
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'scrooloose/nerdtree'
-Plugin 'alfredodeza/pytest.vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'Align'
-Plugin 'AndrewRadev/sideways.vim'
-Plugin 'beloglazov/vim-textobj-quotes'
-Plugin 'martinda/Jenkinsfile-vim-syntax'
-Plugin 'assaflavie/Dockerfile.vim'
-Plugin 'vim-scripts/Greplace.vim'
-Plugin 'assaflavie/vim-textobj-ipmac'
-Plugin 'assaflavie/vim-textobj-underscore'
-" Plugin 'w0rp/ale'
-Plugin 'b4winckler/vim-angry'
-Plugin 'bruno-/vim-line'
-Plugin 'ctrlp.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'dkprice/vim-easygrep'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'elzr/vim-json'
-Plugin 'ervandew/supertab'
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'fatih/vim-go'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'guns/vim-clojure-static'
-Plugin 'haya14busa/vim-auto-programming'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'junegunn/fzf.vim'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'klen/python-mode'
-Plugin 'lpenz/vimcommander'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'matze/vim-move'
-Plugin 'mbbill/undotree'
-Plugin 'mhinz/vim-sayonara'
-Plugin 'mileszs/ack.vim'
-Plugin 'nelstrom/vim-qargs'
-Plugin 'pangloss/vim-javascript'
-Plugin 'qstrahl/vim-dentures'
-Plugin 'rizzatti/dash.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'terryma/vim-expand-region'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-salve'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vimwiki/vimwiki'
-Plugin 'wellle/visual-split.vim'
-Plugin 'wimstefan/Lightning'
+call plug#begin('~/.vim/plugged')
+
+
+" Plug 'Shougo/neocomplete.vim'
+Plug 'AndrewRadev/sideways.vim'
+Plug 'Quramy/vison'
+Plug 'SirVer/ultisnips'
+Plug 'alfredodeza/pytest.vim'
+Plug 'assaflavie/Dockerfile.vim'
+Plug 'assaflavie/vim-textobj-ipmac'
+Plug 'assaflavie/vim-textobj-underscore'
+Plug 'b4winckler/vim-angry'
+Plug 'beloglazov/vim-textobj-quotes'
+Plug 'bruno-/vim-line'
+Plug 'chase/vim-ansible-yaml'
+Plug 'dkprice/vim-easygrep'
+Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'elzr/vim-json'
+Plug 'ervandew/supertab'
+Plug 'evanmiller/nginx-vim-syntax'
+Plug 'fatih/vim-go'
+Plug 'gmarik/Vundle.vim'
+Plug 'guns/vim-clojure-static'
+Plug 'hashivim/vim-terraform'
+Plug 'haya14busa/vim-auto-programming'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'junegunn/fzf.vim'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-user'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kien/ctrlp.vim'
+Plug 'klen/python-mode'
+Plug 'lpenz/vimcommander'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'maralla/completor.vim'
+Plug 'martinda/Jenkinsfile-vim-syntax'
+Plug 'matze/vim-move'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-sayonara'
+Plug 'mileszs/ack.vim'
+Plug 'nelstrom/vim-qargs'
+Plug 'pangloss/vim-javascript'
+Plug 'qstrahl/vim-dentures'
+Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'suan/vim-instant-markdown'
+Plug 'ternjs/tern_for_vim'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/Align'
+Plug 'vim-scripts/Greplace.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'wellle/visual-split.vim'
+Plug 'wimstefan/Lightning'
+call plug#end()
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+" call vundle#end()            " required
 filetype plugin on
 filetype plugin indent on
 syntax on
@@ -123,6 +131,8 @@ let g:fzf_command_prefix = 'Fzf'
 " let g:ctrlp_show_hidden = 1
 " set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+let g:ctrlp_open_multiple_files = 'v'
+
 noremap <C-h> :bprevious<CR>
 noremap <C-l> :bnext<CR>
 noremap <C-t> :tabnew
@@ -162,13 +172,16 @@ augroup my_commands
     autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
 augroup END
 
-" Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:ale_javascript_eslint_executable="/Users/assaf/.nvm/versions/node/v4.4.5/bin/eslint"
+let g:ale_javascript_eslint_options="-c ~/binaris/spice/.eslintrc.js"
+let g:ale_python_pylint_use_global=1
 
-" Requires: npm install -g eslint babel-eslint
-let g:syntastic_javascript_checkers = ['eslint']
+let g:ale_emit_conflict_warnings=0
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
 
 vmap <silent> aar <Plug>AngryOuterPrefix
 omap <silent> aar <Plug>AngryOuterPrefix
