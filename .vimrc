@@ -21,7 +21,9 @@ Plug 'alfredodeza/pytest.vim'
 Plug 'assaflavie/Dockerfile.vim'
 Plug 'assaflavie/vim-textobj-ipmac'
 Plug 'assaflavie/vim-textobj-underscore'
+Plug 'francoiscabrol/ranger.vim'
 Plug 'b4winckler/vim-angry'
+Plug 'rhysd/clever-f.vim'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'bruno-/vim-line'
 Plug 'chase/vim-ansible-yaml'
@@ -46,7 +48,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
 Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'maralla/completor.vim'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
@@ -111,6 +112,7 @@ set cursorline
 
 set rtp+=/usr/local/opt/fzf
 
+let g:ranger_map_keys = 0
 
 " Easy Grep
 let g:EasyGrepRoot = "repository"
@@ -120,6 +122,9 @@ let g:terraform_align=1
 
 colorscheme tayra
 
+
+runtime autoload/grepper.vim  " initialize g:grepper with default values
+let g:grepper.dir = 'file'
 
 " For multiple-cursors to function properly
 set selection=inclusive
@@ -139,6 +144,8 @@ noremap <C-t> :tabnew
 noremap <F2> :NERDTreeToggle<CR>
 noremap j gj
 noremap k gk
+nnoremap <Leader>g :Grepper<CR>
+nnoremap <Leader>r :Ranger<CR>
 " if (exists("g:ctrlp_custom_ignore"))
 "     unlet g:ctrlp_custom_ignore
 " endif
