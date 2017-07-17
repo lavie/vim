@@ -356,6 +356,7 @@ nnoremap <Leader>w :w<CR>
 nnoremap <S-Enter> O<Esc>
 nnoremap <S-left> :bp<CR>
 nnoremap <S-right> :bn<CR>
+nnoremap <Leader>l :set list!<CR>
 vnoremap <silent><leader>y :w !pbcopy<CR>
 nnoremap <silent> + :vert resize +2<CR>
 nnoremap <silent> - :resize -2<CR>
