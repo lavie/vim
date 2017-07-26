@@ -12,8 +12,6 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
-
-" Plug 'Shougo/neocomplete.vim'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'Quramy/vison'
 Plug 'SirVer/ultisnips'
@@ -21,12 +19,11 @@ Plug 'alfredodeza/pytest.vim'
 Plug 'assaflavie/Dockerfile.vim'
 Plug 'assaflavie/vim-textobj-ipmac'
 Plug 'assaflavie/vim-textobj-underscore'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'b4winckler/vim-angry'
-Plug 'rhysd/clever-f.vim'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'bruno-/vim-line'
 Plug 'chase/vim-ansible-yaml'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'dkprice/vim-easygrep'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -34,6 +31,7 @@ Plug 'elzr/vim-json'
 Plug 'ervandew/supertab'
 Plug 'evanmiller/nginx-vim-syntax'
 Plug 'fatih/vim-go'
+Plug 'francoiscabrol/ranger.vim'
 Plug 'gmarik/Vundle.vim'
 Plug 'guns/vim-clojure-static'
 Plug 'hashivim/vim-terraform'
@@ -57,6 +55,7 @@ Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-qargs'
 Plug 'pangloss/vim-javascript'
 Plug 'qstrahl/vim-dentures'
+Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'suan/vim-instant-markdown'
@@ -72,12 +71,13 @@ Plug 'tpope/vim-salve'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/Align'
+" Plug 'vim-scripts/Align'
 Plug 'vim-scripts/Greplace.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wellle/visual-split.vim'
 Plug 'wimstefan/Lightning'
+Plug 'zephod/vim-iterm2-navigator'
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -317,6 +317,7 @@ nnoremap <Leader>a :Ack! <C-r><C-w>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
+nnoremap <Leader>bw :e ~/vimwiki/binaris.wiki<CR>
 
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
