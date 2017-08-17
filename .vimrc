@@ -29,7 +29,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 Plug 'ervandew/supertab'
-Plug 'evanmiller/nginx-vim-syntax'
+Plug 'vim-scripts/nginx.vim'
 Plug 'fatih/vim-go'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'gmarik/Vundle.vim'
@@ -77,7 +77,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wellle/visual-split.vim'
 Plug 'wimstefan/Lightning'
-Plug 'zephod/vim-iterm2-navigator'
 call plug#end()
 
 " All of your Plugins must be added before the following line
@@ -346,6 +345,7 @@ au FileType go nmap <Leader>gl :w<CR>:GoLint<CR>
 au FileType go nmap <Leader>gr :GoRename
 au FileType go nmap <Leader>gt :w<CR>:GoTest<CR>
 au FileType go nmap <Leader>gtf :w<CR>:GoTestFunc<CR>
+
 nnoremap <Leader>o :FzfBuffers<CR>
 nnoremap <Leader>p :FzfFiles<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -375,3 +375,6 @@ vnoremap <Leader>vsa :VSSplitAbove<CR>
 vnoremap v <Plug>(expand_region_expand)
 vnoremap y ygv<ESC>
 nnoremap <Leader>sp :set paste<CR>
+
+let tern_map_prefix="<Leader>j"
+let tern_map_keys=1
