@@ -8,5 +8,5 @@ if [[ -e "~/.vimrc" ]]; then
 fi
 ln -s ~/.vim/.vimrc ~/.vimrc
 
-vim -c "VundleInstall" +qall
+vim -c "PlugInstall" +qall
 vim -c "helptags ~/.vim/bundle/ctrlp.vim/doc" +qall

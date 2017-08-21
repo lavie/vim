@@ -92,26 +92,27 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 
 set ruler
 
-set incsearch
-set hlsearch
+set autochdir
+set cursorline
 set expandtab
-" set smartindent
+set gdefault " use global flag by default in s: commands
+set guifont=Menlo\ Regular:h14
+set hidden
+set hlsearch
+set ignorecase
+set incsearch
+set number
+set relativenumber
+set shiftwidth=4
+set smarttab
 set tabstop=4
 set wildmenu
-set ignorecase
-set shiftwidth=4
-set hidden
-set relativenumber
-set number
-set smarttab
 set wildmode=longest,list
-set autochdir
-set guifont=Menlo\ Regular:h14
-set cursorline
 
 set rtp+=/usr/local/opt/fzf
 
 let g:ranger_map_keys = 0
+let g:netrw_banner = 0 " Turn off banner
 
 " Easy Grep
 let g:EasyGrepRoot = "repository"
@@ -233,12 +234,6 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-" Python (Jedi-VIM)
-" let g:jedi#show_call_signatures = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#show_call_signatures = 0
-let g:jedi#goto_command = ""
-
 
 " pymode
 let g:pymode_options_max_line_length=80
@@ -250,15 +245,6 @@ let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
 let g:pymode_rope_autoimport = 0
 
-
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-"
-"
-" set completefunc=autoprogramming#complete
-
-" Tagbar
 
 " Airline
 let g:airline_powerline_fonts = 1
