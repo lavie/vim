@@ -50,7 +50,6 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'matze/vim-move'
 Plug 'mbbill/undotree'
-Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-sayonara'
 Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-qargs'
@@ -124,9 +123,6 @@ let g:terraform_align=1
 colorscheme tayra
 
 
-runtime autoload/grepper.vim  " initialize g:grepper with default values
-let g:grepper.dir = 'file'
-
 " For multiple-cursors to function properly
 set selection=inclusive
 
@@ -145,7 +141,6 @@ noremap <C-t> :tabnew
 noremap <F2> :NERDTreeToggle<CR>
 noremap j gj
 noremap k gk
-nnoremap <Leader>g :Grepper<CR>
 nnoremap <Leader>r :Ranger<CR>
 " if (exists("g:ctrlp_custom_ignore"))
 "     unlet g:ctrlp_custom_ignore
