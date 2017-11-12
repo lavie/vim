@@ -16,10 +16,10 @@ Plug 'AndrewRadev/sideways.vim'
 Plug 'Quramy/vison'
 Plug 'SirVer/ultisnips'
 Plug 'alfredodeza/pytest.vim'
-Plug 'assaflavie/Dockerfile.vim'
-Plug 'assaflavie/vim-textobj-ipmac'
+Plug 'lavie/Dockerfile.vim'
+Plug 'lavie/vim-textobj-ipmac'
 Plug 'maralla/completor.vim'
-Plug 'assaflavie/vim-textobj-underscore'
+Plug 'lavie/vim-textobj-underscore'
 Plug 'b4winckler/vim-angry'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'bruno-/vim-line'
@@ -29,6 +29,7 @@ Plug 'dkprice/vim-easygrep'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
+Plug 'lavie/fzf.vim', { 'branch': 'tmp' }
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/nginx.vim'
 Plug 'fatih/vim-go'
@@ -39,11 +40,9 @@ Plug 'hashivim/vim-terraform'
 Plug 'haya14busa/vim-auto-programming'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/ctrlp.vim'
 Plug 'klen/python-mode'
 Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
@@ -58,7 +57,7 @@ Plug 'qstrahl/vim-dentures'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'suan/vim-instant-markdown'
+" Plug 'suan/vim-instant-markdown'
 Plug 'ternjs/tern_for_vim'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
@@ -86,9 +85,11 @@ filetype plugin indent on
 syntax on
 aut BufNewFile,BufRead *.json set filetype=json
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType as3 setlocal smartindent
 autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd filetype crontab setlocal nobackup nowritebackup
+" autocmd FileType terraform setlocal commentstring=#\ %s
 
 set ruler
 
@@ -129,12 +130,6 @@ set selection=inclusive
 let g:fzf_command_prefix = 'Fzf'
 
 
-" Enable CtrlP
-" let g:ctrlp_show_hidden = 1
-" set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-let g:ctrlp_open_multiple_files = 'v'
-
 noremap <C-h> :bprevious<CR>
 noremap <C-l> :bnext<CR>
 noremap <C-t> :tabnew
@@ -142,12 +137,7 @@ noremap <F2> :NERDTreeToggle<CR>
 noremap j gj
 noremap k gk
 nnoremap <Leader>r :Ranger<CR>
-" if (exists("g:ctrlp_custom_ignore"))
-"     unlet g:ctrlp_custom_ignore
-" endif
-" let g:ctrlp_custom_ignore = '\v(dist|reports/node/lib|_meta/_tmp|dockerbuild|node_modules|.ropeproject|\.map|\.git|\.pyc|\.swp|\.egg-info)$'
-" " I don't like MRU, and I see no other way to disable it.
-" let g:ctrlp_mruf_max = 0
+nnoremap <Leader>gs :Gstatus<CR>
 
 
 " highlight only lines longer than 120
@@ -176,7 +166,7 @@ augroup my_commands
 augroup END
 
 let g:ale_javascript_eslint_executable="/Users/assaf/.nvm/versions/node/v4.4.5/bin/eslint"
-let g:ale_javascript_eslint_options="-c ~/binaris/spice/.eslintrc.js"
+let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
 let g:ale_python_pylint_use_global=1
 
 let g:ale_emit_conflict_warnings=0
