@@ -18,13 +18,14 @@ Plug 'SirVer/ultisnips'
 Plug 'alfredodeza/pytest.vim'
 Plug 'lavie/Dockerfile.vim'
 Plug 'lavie/vim-textobj-ipmac'
-Plug 'maralla/completor.vim'
+"Plug 'maralla/completor.vim' " Causes javascript completion problems
 Plug 'lavie/vim-textobj-underscore'
 Plug 'b4winckler/vim-angry'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'bruno-/vim-line'
 Plug 'chase/vim-ansible-yaml'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'leafgarland/typescript-vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
@@ -48,17 +49,19 @@ Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'matze/vim-move'
+Plug 'sodapopcan/vim-twiggy'
 Plug 'mbbill/undotree'
 Plug 'mhinz/vim-sayonara'
 Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-qargs'
 Plug 'pangloss/vim-javascript'
 Plug 'qstrahl/vim-dentures'
+Plug 'Quramy/tsuquyomi'
 Plug 'rhysd/clever-f.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdtree'
 " Plug 'suan/vim-instant-markdown'
-Plug 'ternjs/tern_for_vim'
+" Plug 'ternjs/tern_for_vim' " slows down moving from js buffers
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -84,8 +87,10 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 aut BufNewFile,BufRead *.json set filetype=json
+aut BufNewFile,BufRead *.d.ts set filetype=go
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType as3 setlocal smartindent
 autocmd FileType make setlocal noexpandtab tabstop=4 shiftwidth=4
 autocmd filetype crontab setlocal nobackup nowritebackup
@@ -167,12 +172,14 @@ augroup END
 
 let g:ale_javascript_eslint_executable="/Users/assaf/.nvm/versions/node/v4.4.5/bin/eslint"
 let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
+let g:ale_typescript_tslint_config_path="~/binaris/nodeutils/tslint.json"
 let g:ale_python_pylint_use_global=1
 
 let g:ale_emit_conflict_warnings=0
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
 \}
 
 
@@ -192,6 +199,10 @@ let g:ackprg = "ag --vimgrep"
 
 
 " Sideways
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
 
 " Abbreviations
 cabbrev pla PymodeLintAuto
@@ -231,6 +242,7 @@ let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
 let g:pymode_rope_autoimport = 0
 
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 " Airline
 let g:airline_powerline_fonts = 1
@@ -325,6 +337,7 @@ nnoremap <Leader>ve :vsplit $MYVIMRC<CR>
 nnoremap <Leader>vs :noautocmd write<cr>:so %<cr>:Sayonara<CR>
 nmap <Leader>vwi <Plug>VimwikiIndex
 nmap <Leader>vws :VimwikiSearch
+
 nnoremap <Leader>w :w<CR>
 nnoremap <S-Enter> O<Esc>
 nnoremap <S-left> :bp<CR>
