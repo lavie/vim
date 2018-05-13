@@ -47,7 +47,7 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'klen/python-mode'
 Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'martinda/Jenkinsfile-vim-syntax'
+" Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'matze/vim-move'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'mbbill/undotree'
@@ -87,7 +87,11 @@ filetype plugin on
 filetype plugin indent on
 syntax on
 aut BufNewFile,BufRead *.json set filetype=json
-aut BufNewFile,BufRead *.d.ts set filetype=go
+aut BufNewFile,BufRead *.tf.j2 set filetype=terraform
+aut BufNewFile,BufRead *.Dockerfile.j2 set filetype=dockerfile
+aut BufNewFile,BufRead *.d.ts set filetype=typescript
+aut BufNewFile,BufRead Jenkinsfile set filetype=groovy
+aut BufNewFile,BufRead *.Jenkinsfile set filetype=groovy
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
@@ -97,10 +101,11 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " autocmd FileType terraform setlocal commentstring=#\ %s
 
 set ruler
-
+set autoindent
 set autochdir
 set cursorline
 set expandtab
+set termguicolors
 set gdefault " use global flag by default in s: commands
 set guifont=Menlo\ Regular:h14
 set hidden
@@ -126,7 +131,7 @@ let g:EasyGrepFilesToExclude=".git,node_modules"
 
 let g:terraform_align=1
 
-colorscheme tayra
+colorscheme apprentice
 
 
 " For multiple-cursors to function properly
@@ -171,15 +176,18 @@ augroup my_commands
 augroup END
 
 let g:ale_javascript_eslint_executable="/Users/assaf/.nvm/versions/node/v4.4.5/bin/eslint"
-let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
-let g:ale_typescript_tslint_config_path="~/binaris/nodeutils/tslint.json"
+let g:ale_javascript_eslint_options="-c /Users/assaf/binaris/nodeutils/.eslintrc.js"
+let g:ale_typescript_tslint_executable="/Users/assaf/binaris/nodeutils/node_modules/.bin/tslint"
+let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
 let g:ale_python_pylint_use_global=1
+let g:ale_python_pylint_executable="/Users/assaf/binaris/venv3/bin/pylint"
 
 let g:ale_emit_conflict_warnings=0
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'typescript': ['tslint'],
+\   'python': ['pylint'],
 \}
 
 
