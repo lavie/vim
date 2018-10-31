@@ -1,17 +1,12 @@
 let mapleader = "\<space>"
 set backspace=indent,eol,start
+set t_Co=256
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-
-" let Vundle manage Vundle, required
-" let g:angry_disable_maps=1
-
 call plug#begin('~/.vim/plugged')
 
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'Quramy/vison'
 Plug 'SirVer/ultisnips'
@@ -24,13 +19,15 @@ Plug 'b4winckler/vim-angry'
 Plug 'beloglazov/vim-textobj-quotes'
 Plug 'bruno-/vim-line'
 Plug 'chase/vim-ansible-yaml'
+Plug 'avakhov/vim-yaml'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'leafgarland/typescript-vim'
 Plug 'dkprice/vim-easygrep'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
-Plug 'lavie/fzf.vim', { 'branch': 'tmp' }
+" Plug 'junegunn/fzf.vim'
+Plug 'lavie/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/nginx.vim'
 Plug 'fatih/vim-go'
@@ -44,7 +41,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'klen/python-mode'
+Plug 'python-mode/python-mode'
 Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -120,7 +117,7 @@ set tabstop=4
 set wildmenu
 set wildmode=longest,list
 
-set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
 
 let g:ranger_map_keys = 0
 let g:netrw_banner = 0 " Turn off banner
@@ -175,8 +172,8 @@ augroup my_commands
     autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
 augroup END
 
-let g:ale_javascript_eslint_executable="/Users/assaf/.nvm/versions/node/v4.4.5/bin/eslint"
-let g:ale_javascript_eslint_options="-c /Users/assaf/binaris/nodeutils/.eslintrc.js"
+let g:ale_javascript_eslint_executable="/usr/bin/eslint"
+let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
 let g:ale_typescript_tslint_executable="/Users/assaf/binaris/nodeutils/node_modules/.bin/tslint"
 let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
 let g:ale_python_pylint_use_global=1
@@ -189,6 +186,9 @@ let g:ale_linters = {
 \   'typescript': ['tslint'],
 \   'python': ['pylint'],
 \}
+
+autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+autocmd FileType python setlocal completeopt-=preview
 
 
 vmap <silent> aar <Plug>AngryOuterPrefix
@@ -241,10 +241,12 @@ com! DiffSaved call s:DiffWithSaved()
 
 
 " pymode
-let g:pymode_options_max_line_length=80
+let g:pymode_rope=1
+let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
 let g:pymode_folding=0
-let g:pymode_rope_complete_on_dot=0
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot=1
 let g:pymode_lint_ignore = "W0401,C0111,I0011"
 let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
@@ -304,11 +306,12 @@ nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <Leader>< :SidewaysLeft<CR>
 nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <Leader>a :Ack! <C-r><C-w>
+nnoremap <Leader>a :FzfAg ~/binaris<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
 nnoremap <Leader>bw :e ~/vimwiki/binaris.wiki<CR>
+nnoremap <Leader>e :e!<CR>
 
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
@@ -368,6 +371,10 @@ vnoremap <Leader>vsa :VSSplitAbove<CR>
 vnoremap v <Plug>(expand_region_expand)
 vnoremap y ygv<ESC>
 nnoremap <Leader>sp :set paste<CR>
+:command! Q q
+nnoremap <silent><Leader>yi :%! yq --yaml-output '.'<CR>
+noremap <silent><leader>n :if &number \| set nonumber \| set norelativenumber \| else \| set number \| set relativenumber \| endif<CR>
+" nnoremap <silent><Leader>n :set nonumber<CR>:set norelativenumber<CR>
 
 let tern_map_prefix="<Leader>j"
 let tern_map_keys=1
