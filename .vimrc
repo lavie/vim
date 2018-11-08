@@ -27,6 +27,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 " Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
 Plug 'lavie/fzf.vim'
 Plug 'ervandew/supertab'
 Plug 'vim-scripts/nginx.vim'
@@ -173,11 +174,11 @@ augroup my_commands
 augroup END
 
 let g:ale_javascript_eslint_executable="/usr/bin/eslint"
-let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
-let g:ale_typescript_tslint_executable="/Users/assaf/binaris/nodeutils/node_modules/.bin/tslint"
-let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
+" let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
+" let g:ale_typescript_tslint_executable="/Users/assaf/binaris/nodeutils/node_modules/.bin/tslint"
+" let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
 let g:ale_python_pylint_use_global=1
-let g:ale_python_pylint_executable="/Users/assaf/binaris/venv3/bin/pylint"
+" let g:ale_python_pylint_executable="/Users/assaf/binaris/venv3/bin/pylint"
 
 let g:ale_emit_conflict_warnings=0
 
@@ -306,11 +307,10 @@ nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <Leader>< :SidewaysLeft<CR>
 nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <Leader>a :FzfAg ~/binaris<CR>
+nnoremap <Leader>a :FzfAg ~/amenity<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
-nnoremap <Leader>bw :e ~/vimwiki/binaris.wiki<CR>
 nnoremap <Leader>e :e!<CR>
 
 nnoremap [q :cprev<CR>
