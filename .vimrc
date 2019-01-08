@@ -52,6 +52,7 @@ Plug 'mbbill/undotree'
 Plug 'mhinz/vim-sayonara'
 Plug 'mileszs/ack.vim'
 Plug 'nelstrom/vim-qargs'
+Plug 'pedrohdz/vim-yaml-folds'
 Plug 'pangloss/vim-javascript'
 Plug 'qstrahl/vim-dentures'
 Plug 'Quramy/tsuquyomi'
@@ -171,6 +172,7 @@ augroup my_commands
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     autocmd BufRead,BufNewFile *.as set filetype=as3
     autocmd BufRead,BufNewFile *.yml.j2 set filetype=yaml
+    autocmd FileType yaml setlocal foldmethod=indent
 augroup END
 
 let g:ale_javascript_eslint_executable="/usr/bin/eslint"
