@@ -1,5 +1,6 @@
 let mapleader = "\<space>"
 set backspace=indent,eol,start
+set wrap
 set t_Co=256
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -10,8 +11,11 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'Quramy/vison'
 Plug 'SirVer/ultisnips'
+Plug 'sharat87/roast.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'lavie/Dockerfile.vim'
+Plug 'vim-scripts/bats.vim'
+Plug 'tpope/vim-unimpaired'
 Plug 'lavie/vim-textobj-ipmac'
 "Plug 'maralla/completor.vim' " Causes javascript completion problems
 Plug 'lavie/vim-textobj-underscore'
@@ -138,6 +142,8 @@ set selection=inclusive
 
 let g:fzf_command_prefix = 'Fzf'
 
+command! GREP :execute 'vimgrep '.expand('<cword>').' '.expand('%') | :copen | :cc
+" nnoremap * *:GREP<CR>
 
 noremap <C-h> :bprevious<CR>
 noremap <C-l> :bnext<CR>
@@ -179,9 +185,16 @@ let g:ale_javascript_eslint_executable="/usr/bin/eslint"
 " let g:ale_javascript_eslint_options="-c ~/binaris/nodeutils/.eslintrc.js"
 " let g:ale_typescript_tslint_executable="/Users/assaf/binaris/nodeutils/node_modules/.bin/tslint"
 " let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
-let g:ale_python_pylint_use_global=1
+" let g:ale_python_pylint_use_global=1
+" let g:ale_python_pylint_auto_pipenv=1
+let g:ale_python_pylint_executable="pipenv"
+" let g:ale_python_pylint_executable="/usr/local/bin/pylint"
+let g:ale_python_pylint_options = '--rcfile /home/assaf/amenity/panama/.pylintrc'
+" let g:ale_python_pylint_change_directory=1
 " let g:ale_python_pylint_executable="/Users/assaf/binaris/venv3/bin/pylint"
 
+
+let g:pymode_python = 'python3'
 let g:ale_emit_conflict_warnings=0
 
 let g:ale_linters = {
@@ -189,6 +202,8 @@ let g:ale_linters = {
 \   'typescript': ['tslint'],
 \   'python': ['pylint'],
 \}
+
+let g:ale_yaml_yamllint_options = '-c ~/amenity/panama/.yamllint'
 
 autocmd Filetype java setlocal omnifunc=javacomplete#Complete
 autocmd FileType python setlocal completeopt-=preview
@@ -245,16 +260,16 @@ com! DiffSaved call s:DiffWithSaved()
 
 " pymode
 let g:pymode_rope=1
+let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
-let g:pymode_folding=0
+let g:pymode_folding=1
 let g:pymode_rope_completion = 1
 let g:pymode_rope_complete_on_dot=1
 let g:pymode_lint_ignore = "W0401,C0111,I0011"
 let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
 let g:pymode_rope_autoimport = 0
-
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 " Airline
@@ -302,7 +317,7 @@ let g:move_map_keys = 0
 
 let g:instant_markdown_slow = 1
 "noremap <F8> :TagbarOpenAutoClose<CR>
-nnoremap <BS> :noh<CR>
+nnoremap <BS> :noh<CR>:cclose<CR>
 nnoremap <C-_> mb$x`b
 nnoremap <c-f> :%! js-beautify --brace-style=collapse-preserve-inline<cr>
 nnoremap <C-j> 10jzz
@@ -314,6 +329,7 @@ nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
 nnoremap <Leader>e :e!<CR>
+nnoremap <silent> <Leader>curl :enew<CR>:set filetype=roast<CR>
 
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
