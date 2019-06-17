@@ -108,7 +108,7 @@ set autoindent
 set autochdir
 set cursorline
 set expandtab
-set termguicolors
+" set termguicolors
 set gdefault " use global flag by default in s: commands
 set guifont=Menlo\ Regular:h14
 set hidden
