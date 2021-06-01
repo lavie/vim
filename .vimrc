@@ -13,6 +13,8 @@ Plug 'Quramy/vison'
 Plug 'SirVer/ultisnips'
 Plug 'sharat87/roast.vim'
 Plug 'alfredodeza/pytest.vim'
+Plug 'vim-scripts/YankRing.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lavie/Dockerfile.vim'
 Plug 'vim-scripts/bats.vim'
 Plug 'tpope/vim-unimpaired'
@@ -93,6 +95,7 @@ aut BufNewFile,BufRead *.json set filetype=json
 aut BufNewFile,BufRead *.tf.j2 set filetype=terraform
 aut BufNewFile,BufRead *.Dockerfile.j2 set filetype=dockerfile
 aut BufNewFile,BufRead *.d.ts set filetype=typescript
+aut BufNewFile,BufRead *.ts set filetype=typescript
 aut BufNewFile,BufRead Jenkinsfile set filetype=groovy
 aut BufNewFile,BufRead *.Jenkinsfile set filetype=groovy
 autocmd FileType json setlocal shiftwidth=2 tabstop=2
@@ -153,6 +156,7 @@ noremap j gj
 noremap k gk
 nnoremap <Leader>r :Ranger<CR>
 nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>yr :YRShow<CR>
 
 
 " highlight only lines longer than 120
@@ -324,7 +328,7 @@ nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <Leader>< :SidewaysLeft<CR>
 nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <Leader>a :FzfAg ~/amenity<CR>
+nnoremap <Leader>a :FzfAg ~/<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
@@ -396,3 +400,16 @@ noremap <silent><leader>n :if &number \| set nonumber \| set norelativenumber \|
 
 let tern_map_prefix="<Leader>j"
 let tern_map_keys=1
+
+let g:tsuquyomi_completion_detail = 1
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ coc#refresh()
+
