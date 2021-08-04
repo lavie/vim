@@ -10,7 +10,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'AndrewRadev/sideways.vim'
 Plug 'Quramy/vison'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'sharat87/roast.vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'vim-scripts/YankRing.vim'
@@ -48,7 +48,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'kana/vim-textobj-entire'
 Plug 'kana/vim-textobj-user'
 Plug 'kchmck/vim-coffee-script'
-Plug 'python-mode/python-mode'
+" Plug 'python-mode/python-mode'
 Plug 'lpenz/vimcommander'
 Plug 'maksimr/vim-jsbeautify'
 " Plug 'martinda/Jenkinsfile-vim-syntax'
@@ -177,7 +177,7 @@ augroup my_commands
     autocmd!
     autocmd BufWritePre * call StripTrailingWS()
     autocmd bufwritepost .vimrc source $MYVIMRC
-    autocmd bufwritepost *.go :GoLint
+    " autocmd bufwritepost *.go :GoLint
     autocmd bufwritepost *.tf :TerraformFmt
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
     autocmd BufRead,BufNewFile *.as set filetype=as3
@@ -191,9 +191,9 @@ let g:ale_javascript_eslint_executable="/usr/bin/eslint"
 " let g:ale_typescript_tslint_config_path="/Users/assaf/binaris/nodeutils/tslint.yml"
 " let g:ale_python_pylint_use_global=1
 " let g:ale_python_pylint_auto_pipenv=1
-let g:ale_python_pylint_executable="pipenv"
+" let g:ale_python_pylint_executable="pipenv"
 " let g:ale_python_pylint_executable="/usr/local/bin/pylint"
-let g:ale_python_pylint_options = '--rcfile /home/assaf/amenity/panama/.pylintrc'
+" let g:ale_python_pylint_options = '--rcfile /home/assaf/amenity/panama/.pylintrc'
 " let g:ale_python_pylint_change_directory=1
 " let g:ale_python_pylint_executable="/Users/assaf/binaris/venv3/bin/pylint"
 
@@ -263,13 +263,13 @@ com! DiffSaved call s:DiffWithSaved()
 
 
 " pymode
-let g:pymode_rope=1
+let g:pymode_rope=0
 let g:pymode_rope_goto_definition_cmd = 'e'
 let g:pymode_options_max_line_length=120
 let g:pymode_rope_completion_bind = '<S-Space>'
 let g:pymode_folding=1
-let g:pymode_rope_completion = 1
-let g:pymode_rope_complete_on_dot=1
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot=0
 let g:pymode_lint_ignore = "W0401,C0111,I0011"
 let g:pymode_lint_checkers = []
 let g:pymode_doc = 0
@@ -328,7 +328,7 @@ nnoremap <C-j> 10jzz
 nnoremap <C-k> 10kzz
 nnoremap <Leader>< :SidewaysLeft<CR>
 nnoremap <Leader>> :SidewaysRight<CR>
-nnoremap <Leader>a :FzfAg ~/<CR>
+nnoremap <Leader>a :FzfAg ~/tagena<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>c gcc
 nnoremap <Leader>tff :TerraformFmt<CR>
